@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>我的账户</title>
+	<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,initial-scale=1.0" />
+	<meta content="yes" name="apple-mobile-web-app-capable" />
+	<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+	<meta content="telephone=no" name="format-detection" />
+	<link rel="stylesheet" href="../css/reset.css" />
+	<link rel="stylesheet" href="../css/newlayout.css" />
+	<script type = "text/javascript" src = "../javascript/jquery-1.7.2.min.js"></script>
+	<script type = "text/javascript" src = "../javascript/cookie.js"></script>
+	<style>
+	.active-foot{
+		display:none;
+	}
+	</style>
+</head>
+<script type="text/javascript">
+$(function (){
+	    $(".xiabianlanwd").hide();
+	    $(".active-wd").show();
+	    $(".myTxt").find("p").css("color","#1acbbb");
+	    $(".myTxt").attr('href',"javascript:void(0)");
+	});
+	function goLogin(){
+		history.pushState({}, "我的账户","/weixin/noLogin.html?_r="+Math.random());
+		window.location.href="/weixin/register.html";
+		
+	}
+</script>
+<body>
+	<div class="newBox">
+		<div class="login">
+			<img src="../images/NoLogin.png" alt="">
+		</div>
+		<div class="login-font">
+			<p>还没有登录，看不见你的账户~</p>
+		</div>
+		<div class="div-btn">
+			<input type="button" class="login-btn" value="登录/注册" onclick="goLogin()">
+		</div>
+	</div>
+<!doctype html>
+<meta charset="UTF-8">
+<p style="position:absolute;right:2rem;bottom:6rem;font-size:10px;color:#dddddd">市场有风险，投资需谨慎</p>
+					
+
+	<div  id = "show" class="fixed">
+		<a href="./specialSale/index.html" class="t-jTxt">
+			<dl>
+				<dt  class="xiabianlantj"  style="background-image:url(../images/t-j.png);background-size:100% 25px;height:25px"></dt>
+				<dd><p>推荐</p></dd>
+			</dl>
+		</a>
+		<a href="./mainpage.html?ptype=Q6" class="l-cTxt">
+			<dl>
+				<dt class="xiabianlanlc" style="background-image:url(../images/l-c.png);background-size:100% 25px;height:25px"></dt>
+				<dd><p>理财</p></dd>
+			</dl>
+		</a>
+		<a href="./task.html" class="t-qTxt">
+			<dl>
+				<dt class="xiabianlantq" style="background-image:url(../images/t-q.png);background-size:100% 25px;height:25px"></dt>
+				<dd><p>特权</p></dd>
+			</dl>
+		</a>
+		<a href="./noLogin.html" class="myTxt">
+			<dl>
+				<dt class="active-foot active-wd" style="background-image:url(../images/m-yActive.png);background-size:100% 25px;height:25px"></dt>
+				<dd><p>我的</p></dd>
+			</dl>
+		</a>
+	</div>		
+</body>
+</html>

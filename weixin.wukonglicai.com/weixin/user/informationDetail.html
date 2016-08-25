@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>我的消息</title>
+	<link rel="stylesheet" href="https://m.p2p.com/css/reset.css" />
+	<link rel="stylesheet" href="https://m.p2p.com/css/base.css" />
+	<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,initial-scale=1.0" />
+	<meta content="yes" name="apple-mobile-web-app-capable" />
+	<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+	<meta content="telephone=no" name="format-detection" />
+	<script type="text/javascript" src="https://m.p2p.com//javascript/jquery-1.7.2.min.js"></script>
+</head>
+<script type="text/javascript">
+function messageDetail(obj){
+	$("#messageDetailId").val(obj);
+	$("#messageDetail").submit();
+}
+</script>
+<body>
+<form action="https://m.p2p.com/weixin/user/information.html" method="post" id ="messageDetail">
+	<input type="hidden" name="id" id="messageDetailId">
+</form>
+	<div class = "box">
+		<section class = "inf" id="section" style="position:relative;padding:20px 20px 30px 20px">
+			<div class = "inf_od">
+				<img src="https://m.p2p.com/img/if.png" alt="" style="position:relative;top:17px;">
+			</div>
+			
+			<p style="position:absolute;right:2rem;bottom:5px;font-size:10px;color:#dddddd">市场有风险，投资需谨慎</p>		
+		</section>
+		
+	</div>
+	<script type="text/javascript">
+		window.onload = function(){
+			setTimeout(function(){
+		$.ajax({
+			type:'get',
+			url:'/weixin/user/informations.html',
+			dataType:'text',
+			success:function(data){
+				var list =eval("("+data+")");
+				if(null!=list&&list.length>0){
+					var html="";
+					var date;
+					var str="";
+					for ( var i = 0; i < list.length; i++) {
+						if(list[i].isRead=="T"){
+							str="inf_id_odiod";
+						}else{
+							str="inf_id_od";
+						}
+						html=html+"<a href=\"javascript:messageDetail("+list[i].id+")\"><div class=\"inf_id\"><div class=\""+str+"\"></div>"
+							+"<div class=\"inf_id_id\"><div class=\"inf_id_ido\"><div class=\"inf_id_idood\"><div><p>"+list[i].title+"</p></div>"
+							+"<div class=\"inf_id_idoodo\"></div><div><p>"+list[i].createTimeStr+"</p></div></div><div class=\"inf_id_idodi\"><p>";
+						if(list[i].content!=null&&list[i].content.length>=29){
+							html = html +list[i].content.substring(0,29)+"...";
+						}else if(list[i].content.length<29&&list[i].content.length>0){
+							html = html +list[i].content;
+						}
+						html = html + "</div></div><div class=\"inf_id_idi\">";
+						if(list[i].isRead=="T"){
+							html = html +"<div class=\"inf_id_idoddi\">";
+						}else{
+							html = html +"<div class=\"inf_id_idod\">";
+						}
+						html =html+"</div><div class=\"inf_id_iddi\"></div></div></div></div></a>";
+					}
+					$("#section").append(html);
+				}
+			}
+		});},300);
+		}
+	
+	
+	</script>
+	<div style="display:none">
+	<script>		
+	</script>
+	</div>
+	
+</body>
+</html>

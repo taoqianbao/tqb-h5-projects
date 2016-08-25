@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>我的设置</title>
+	<link rel="stylesheet" type = "text/css" href="../../css/reset.css" />
+	<link rel="stylesheet" type = "text/css" href="../../css/zhezhao.css" />
+	<link rel="stylesheet" type = "text/css" href="../../css/base.css" />
+	<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,initial-scale=1.0" />
+	<meta content="yes" name="apple-mobile-web-app-capable" />
+	<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+	<meta content="telephone=no" name="format-detection" />
+	<meta http-equiv="pragma" content="no-cache"> 
+	<meta http-equiv="cache-control" content="no-cache"> 
+	<meta http-equiv="expires" content="0">   
+	<script type="text/javascript" src="../../javascript/jquery-1.7.2.min.js"></script>
+</head>
+<script type="text/javascript">
+		window.onload = function(){
+		$.ajax({
+			type:"get",
+			async:"false",
+			url:"refreshInfo.html",
+			dataType:"json",
+			success:function(data){
+					if(data.countIsRead==0){
+						$("#tu1").hide();
+					}else{
+						$("#tu1").show();
+					}
+				}
+			})
+		}	
+		
+	 function messageTip(){
+	 	$("#zhezhao").show();
+		$("#showDiv").show();
+		$("#zhe").show();
+		$("#showmes").hide();
+	 }
+	 
+	 function messageTipHide(){
+	 	$("#zhezhao").hide();
+		$("#showDiv").hide();
+		$("#zhe").hide();
+		$("#showmes").show();
+	 }
+	
+	
+	</script>
+	<style>
+		.shezhi_td_th a{
+			position: relative;
+			top: -35px;
+			left: 73px;
+		}
+	</style>
+<body>
+	<div class = "box">
+		<section class = "zhezhao" id="zhezhao"></section>
+		<aside class = "showDiv" id="showDiv">
+			<div class = "zhe" id="zhe">
+				<h1>提示</h1>
+				<p style="line-height:20px">您的身份认证未通过次数已达3次，<br/>请联系微信客服进行人工认证</p>
+				<span id = "bto2" onclick ="messageTipHide()">确定</span>
+			</div>
+		</aside>
+		
+		<section style="position:relative;padding-bottom: 15px;">
+			<aside class = "shezhi_od">
+				<img src="../../img/face.png" alt="">
+			</aside>
+			<aside class = "shezhi_td">
+				<p>159****4741</p>
+			</aside>
+			<aside class = "shezhi_aside">
+				<div class = "shezhi_div">
+					<div class = "shezhi_td_od">
+						<img src="../../img/to.png" alt="">
+					</div>
+					<div class = "shezhi_td_d">
+						<p>身份认证</p>
+					</div>
+					
+					<div class = "shezhi_td_th">
+							<p><a href="https://m.p2p.com/weixin/user/Auth.html?historyurl=1" style="color: red;position:relative;top:0;left:0">点我认证</a></p>
+					</div>
+				</div>
+			</aside>
+			<aside class = "shezhi_div_td">
+				<div class = "shezhi_div_tdv">
+					<a href = "javascript:void(0);" class = "shezhi_div_tddv" style="padding:0 20px 0 0">
+						<div class = "shezhi_div_tddvo">
+							<img src="../../img/invite.png" alt="">
+						</div>
+						<div class = "shezhi_div_tddvt">
+							<p>我的邀请码</p>
+						</div>
+						<div  class = "shezhi_div_tddvf" style = "width:100px;text-align:right">
+							<p>01604741</p>
+						</div>
+					</a>
+					<a href = "https://m.p2p.com/weixin/user/myprivate.html" class = "shezhi_div_tddv">
+						<div class = "shezhi_div_tddvo">
+							<img src="../../img/to2.png" alt="">
+						</div>
+						<div class = "shezhi_div_tddvt">
+							<p>我的特权</p>
+						</div>
+						<div class = "shezhi_div_tddvh">
+								<p>+0.0%</p>
+						</div>
+						<div  class = "shezhi_div_tddvf">
+							<img src="../../img/yu.png" alt="">
+						</div>
+					</a>
+					<a href = "https://m.p2p.com/weixin/user/informationDetail.html" class = "shezhi_div_tddv">
+						<div class = "shezhi_div_tddvo">
+							<img src="../../img/to3.png" alt="">
+						</div>
+						<div class = "shezhi_div_tddvt">
+							<p>我的消息</p>
+						</div>
+						<div class = "shezhi_div_tddvx" id="tu1" style="display: none;">
+						 	<img src="../../img/tu1.png" alt="">
+						</div>
+						<div  class = "shezhi_div_tddvf">
+							<img src="../../img/yu.png" alt="">
+						</div>
+					</a>
+				</div>
+			</aside>
+			<aside class = "shezhi_div_th">
+				<div class = "shezhi_div_thd">
+					<a href = "https://m.p2p.com/weixin/user/resetPasswordIndex.html" class = "shezhi_divth">
+						<div class = "shezhi_td_od">
+							<img src="../../img/to4.png" alt="">
+						</div>
+						<div class = "shezhi_td_d">
+							<p>修改登录密码</p>
+						</div>
+						<div class = "shezhi_td_thd">
+							<img src="../../img/yu.png" alt="">
+						</div>
+					</a>
+						<a></a>
+					
+				</div>				
+			</aside>
+			
+			<div class = "shezhi_dif">
+				<a href = "https://m.p2p.com/weixin/user/quit.html" class = "shezhi_dfi">
+					<p>退出登录</p>
+				</a>
+			</div>
+			<p style="position:absolute;right:30px;bottom:5px;font-size:10px;color:#dddddd">市场有风险，投资需谨慎</p>
+		</section>
+	</div>
+</body>
+<div style="display:none">
+	<script>		
+	</script>
+	</div>
+</html>

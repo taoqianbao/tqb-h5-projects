@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>特权记录</title>
+	<link rel="stylesheet" href="../../css/reset.css" />
+	<link rel="stylesheet" href="../../css/base.css?21050531" />
+	<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,initial-scale=1.0" />
+	<meta content="yes" name="apple-mobile-web-app-capable" />
+	<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+	<meta content="telephone=no" name="format-detection" />
+	<script src = "../../javascript/zepto.min.js"></script>
+	<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<link rel="stylesheet" href="../../css/zhezhao.css" />
+	<meta content="telephone=no" name="format-detection" />
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Cache-Control" content="no-cache">
+	<meta http-equiv="Expires" content="0">
+</head>
+<body>
+	<div class = "box">
+		<section class = "pvi" style="position:relative">
+			<div class = "pvi_odi">
+				<div class = "pvi_od">
+					<div id = "tab">
+						<div class = "pvi_od_od" id="rate">
+					 		<p >特权收益</p>
+					 	</div>
+					 	<div class = "pvi_od_di active" id="gold">
+					 		<p style="color:#fff">特权本金</p>
+					 	</div>
+					</div>
+				 </div>
+			</div>
+			<div id = "box">
+				<aside  style = "display:none">
+					<div class = "pvi_di">
+					 	<div class = "pvi_di_od">
+					 		<p>获得特权收益率</p>
+					 	</div>
+					 	<div class = "pvi_di_di">
+					 		<p id="ppp">0.0<span>%</span></p>
+					 	</div>
+<!-- 					 	<div class = "pvi_di_th">
+					 		<a href="/weixin/user/rule.html">查看特权规则>></a>
+					 	</div> -->
+					 	<div class = "pvi_di_th">
+					 		<p>特权收益率目前上限1.5%</p>
+					 	</div>
+					</div>
+					<div class = "pvi_th" id="pppdiv">
+					</div>
+				</aside>
+				<aside>
+					<div class = "pvi_di">
+					 	<div class = "pvi_di_od">
+					 		<p>获得特权本金</p>
+					 	</div>
+					 	<div class = "pvi_di_di">
+					 		<p id="pp">0.00<span></span></p>
+					 	</div>
+<!-- 					 	<div class = "pvi_di_th">
+					 		<a href="/weixin/user/rule.html">查看特权规则>></a>
+					 	</div> -->
+					 	<div class = "pvi_di_th">
+					 		<p></p>
+					 	</div>
+					</div>
+					<div class = "pvi_th" id="ppdiv">
+									
+					</div>
+				</aside>
+			</div>
+			<div class = "pvi_fo" id = "pvi">
+				<div class = "pvi_fo_od" onclick="pviclick()">
+					<p id="pivp">送好友特权本金</p>
+				</div>
+			</div>
+			<p style="position:relative;top:-75px;font-size:10px;color:#dddddd;text-align:right;padding-right:20px">市场有风险，投资需谨慎</p>
+		</section>
+		<section class = "zhezhao" id = "zhezhao2" style = "position:fixed;bottom:0"></section>
+		<div  id="onload" style = "position:absolute;left:50%;margin-left:-15px;top:50%;display:none">
+			<img src="../../img/load.gif" alt="" width = "30">
+		</div>
+		<div class = "zhezhao" id = "zhezhao" style = "position:fixed;bottom:0">
+			<input type="hidden" id="num" value="0"/>
+			<input type="hidden" id="ptype" value="gold"/>
+		</div>
+		<div class = "zhezhao_od" id = "zhezhao_od">
+			<img src="../../img/dash.png" alt="">
+		</div>
+	</div>
+	<input type="hidden" id="inviteCode" value="01604741"/>
+	<section class = "zhezhao" id = "zhezhaow" style = "position:fixed;bottom:0"></section>
+	<aside class = "showDiv" id = "showDivw" style="position:fixed;top:150px">
+		<div class = "zhe" id = "zhew">
+		<p id="tishi" style="padding:30px 0 6px 0;font-weight:normal">您的邀请码为：<b style="color:#ff7c8a;font-size:14px">01604741</b>，发给好友，注册时填写即可成功发特权啦~</p>
+		<span id = "btoo">确定</span>
+		</div>
+	</aside>
+	<script>
+// 	wx.config({
+//       debug: ,
+//       appId: '',
+//       timestamp: ,
+//       nonceStr: '',
+//       signature: '',
+//       jsApiList: 
+//     });
+	
+	var imgUrl = "https://m.p2p.com/img/face.png";
+    var lineLink = "https://m.p2p.com/weixin/setting/toInvite.do?inviteCode=01604741";
+    var descContent = "金融理财特权本金1000元，6.5%收益，我出本金，你赚收益！";
+    var shareTitle = "送你1000元特权，快领！";
+    var appid = "";
+    var range = 50;             //距下边界长度/单位px
+    var elemt = 500;           //插入元素高度/单位px
+    var maxnum = 10;            //设置加载最多次数
+    var num = 0;
+    var totalheight = 0; 
+    var ptype='';
+    
+    
+//    wx.ready(function () {
+    
+       //wx.checkJsApi({
+	      //jsApiList:,
+	      //success: function (res) {
+	        //alert(JSON.stringify(res));
+	      //}
+      //});
+    
+//      wx.onMenuShareAppMessage({
+// 		      title: shareTitle,
+// 		      desc:  descContent,
+// 		      link: lineLink,
+// 		      imgUrl: imgUrl,
+// 		      trigger: function (res) {
+// 		        alert('用户点击发送给朋友');
+// 		      },
+// 		      success: function (res) {
+		        //alert('已分享');
+// 		      },
+// 		      cancel: function (res) {
+		        //alert('已取消');
+// 		      },
+// 		      fail: function (res) {
+		        //alert(JSON.stringify(res));
+// 		      }
+// 		    });
+		    
+// 	  wx.onMenuShareQQ({
+// 		      title: shareTitle,
+// 		      desc:  descContent,
+// 		      link: lineLink,
+// 		      imgUrl: imgUrl,
+// 		      trigger: function (res) {
+		        //alert('用户点击发送给朋友');
+// 		      },
+// 		      success: function (res) {
+		        //alert('已分享');
+// 		      },
+// 		      cancel: function (res) {
+		        //alert('已取消');
+// 		      },
+// 		      fail: function (res) {
+		        //alert(JSON.stringify(res));
+// 		      }
+// 		    });
+       
+//       wx.onMenuShareTimeline({
+// 		      title: shareTitle,
+// 		      desc:  descContent,
+// 		      link: lineLink,
+// 		      imgUrl: imgUrl,
+// 		      trigger: function (res) {
+		        //alert('用户点击发送给朋友');
+// 		      },
+// 		      success: function (res) {
+		        //alert('已分享');
+// 		      },
+// 		      cancel: function (res) {
+		        //alert('已取消');
+// 		      },
+// 		      fail: function (res) {
+		        //alert(JSON.stringify(res));
+// 		      }
+// 		    });
+		    
+// 		wx.onMenuShareWeibo({
+// 		      title: shareTitle,
+// 		      desc:  descContent,
+// 		      link: lineLink,
+// 		      imgUrl: imgUrl,
+// 		      trigger: function (res) {
+		        //alert('用户点击发送给朋友');
+// 		      },
+// 		      success: function (res) {
+		        //alert('已分享');
+// 		      },
+// 		      cancel: function (res) {
+		        //alert('已取消');
+// 		      },
+// 		      fail: function (res) {
+		        //alert(JSON.stringify(res));
+// 		      }
+// 		    });
+    
+//     });
+   
+
+    function getQueryString(name) {
+	    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+	    var r = window.location.search.substr(1).match(reg);
+	    if (r != null) return unescape(r[2]); return null;
+	   }
+	
+	
+	window.onload=function(){
+		var tab = document.getElementById('tab');
+		var box = document.getElementById('box');
+		var ot = tab.getElementsByTagName('div');
+		var odiv = box.getElementsByTagName('aside');
+		var piv = document.getElementById('pvi');
+		var op = tab.getElementsByTagName('p');
+		var zhezhao = document.getElementById('zhezhao');
+		var zhezhao_od = document.getElementById('zhezhao_od');
+		ptype=getQueryString('method');
+		if(null==ptype||''==ptype){
+			ptype='gold';
+		}
+		if(ptype=='rate'){
+			odiv[0].style.display = "block";
+			odiv[1].style.display = "none";
+			document.getElementById('rate').className="active";
+			document.getElementById('gold').className="";
+			document.getElementById('rate').getElementsByTagName('p')[0].style.color = "#fff";
+			document.getElementById('gold').getElementsByTagName('p')[0].style.color = "#1acbbb";
+		}else{
+			odiv[1].style.display = "block";
+			odiv[0].style.display = "none";
+			document.getElementById('gold').className="active";
+			document.getElementById('rate').className="";
+			document.getElementById('gold').getElementsByTagName('p')[0].style.color = "#fff";
+			document.getElementById('rate').getElementsByTagName('p')[0].style.color = "#1acbbb";
+		}
+		
+		zhezhao.onclick = function (){
+			zhezhao.style.display = "none";
+			zhezhao_od.style.display = "none";
+		};
+		for(var i = 0; i<ot.length; i++){
+			ot[i].index = i;
+			ot[i].onclick = function (){
+				for(var i = 0; i<ot.length; i++){
+					ot[i].className = "";
+					op[i].style.color = "#1acbbb";
+					odiv[i].style.display = "none";
+				}
+				this.className = "active";
+				op[this.index].style.color = "#fff";
+				odiv[this.index].style.display = "block";
+				document.getElementById("num").value = 0;
+				ptype=this.id;
+				if(ptype=='rate'){
+					document.getElementById("pivp").innerHTML="给好友送特权本金";
+				}else{
+					document.getElementById("pivp").innerHTML="给好友送特权本金";
+				}
+				Ajax(this.id,0,300);
+			};
+		}
+		
+		Ajax(ptype,num,300);
+		num++;
+		document.getElementById("num").value=num;
+		$(window).scroll(function(){
+            var srollPos = $(window).scrollTop();    //滚动条距顶部距离(页面超出窗口的高度)
+            
+            console.log("滚动条到顶部的垂直高度: "+$(document).scrollTop());
+            console.log("页面的文档高度 ："+$(document).height());
+            console.log('浏览器的高度：'+$(window).height());
+            num = parseInt(document.getElementById("num").value);
+            totalheight = parseFloat($(window).height()) + parseFloat(srollPos);
+    		if(($(document).height()-range) <= totalheight  && num <= maxnum) {
+    			Ajax(ptype,num,$(document).height()-400);
+                num++;
+                document.getElementById("num").value=num;
+            }
+        });
+	};
+	
+	function pviclick(){
+// 		zhezhao.style.display = "block";
+// 		zhezhao_od.style.display = "block";
+		$('#zhezhaow').show();
+		$('#showDivw').show();
+		$('#zhew').show();
+	};
+	
+	$("#btoo").on('click',function (){
+		$('#zhezhaow').hide();
+		$('#showDivw').hide();
+		$('#zhew').hide();
+	});
+	
+	
+	
+	function Ajax(par,num,hight){
+		setTimeout(function(){
+		Zepto.ajax({
+			type:'get',
+			url:'/weixin/user/inviteOrPrivilege.html?method='+par+"&num="+num,
+			dataType:'text',
+			success:function(data){
+				var json =eval("("+data+")");
+				var list=json.list;
+				document.getElementById("ptype").value=par;
+				if(list&&list.length>0){
+					if(par=='rate'){
+						document.getElementById("ppp").innerHTML=json.totall+"<span>%</span>";
+						var html=document.getElementById("pppdiv").innerHTML;
+						if(num==0){
+							html="";
+						}
+						for(var i=0;i<list.length;i++){
+							var str="邀请好友  ";
+							if(list[i].addType!=null&&list[i].addType=='register'){
+								str="被邀注册  ";
+							}
+							if(null==list[i].fromMobile||'null'==list[i].fromMobile||''==list[i].fromMobile){
+								if(list[i].extraYield==0.5){
+									str="系统发放";
+								}else{
+									str="创始人特权"; 
+								}
+							}else{
+								 	str=str+list[i].fromMobile;
+							}
+							if(list[i].addType!=null&&list[i].addType=='systemVip'){
+								str="VIP终生特权  ";
+							}
+							var string="";
+							if(null==list[i].endTimeStr||'null'==list[i].endTimeStr||'null'==list[i].endTimeStr){
+								string="永久有效";
+							}else{
+								string=list[i].endTimeStr;
+							}
+							if(list[i].disable!=null&&list[i].disable=="T"){
+								html=html+"<div class = \"pvi_th_od\"><div class = \"pvi_th_odo\" style=\"background:#dbdbdb\">"
+										+"<p>"+list[i].createTimeStr+"</p></div><div class = \"pvi_th_di\">"
+										+"<div class = \"pvi_th_dio\"><img src=\"../../img/exo.png\" alt=\"\">"
+										+"<p style=\"color:#dbdbdb\">+"+list[i].extraYield+"%</p><div class = \"pvi_th_io\"></div></div>"
+										+"<div class = \"pvi_th_diodi\" style=\"position:relative\"><div class = \"pvi_th_diodio\">"
+										+"<p>"+str+"</p></div><div class = \"pvi_th_diodoi\">"
+										+"<p>过期时间:<span>"+string+"</span></p></div>"
+										+"<div style=\"position: absolute;right: 6px;top: 20px;\"><img src=\"../../img/ex.png\" width=\"45px\" alt=\"\"></div></div></div></div>";
+							}else{
+								html=html+"<div class = \"pvi_th_od\"><div class = \"pvi_th_odo\">"
+										+"<p>"+list[i].createTimeStr+"</p></div><div class = \"pvi_th_di\">"
+										+"<div class = \"pvi_th_dio\"><img src=\"../../img/ui.png\" alt=\"\">"
+										+"<p>+"+list[i].extraYield+"%</p><div class = \"pvi_th_io\"></div></div>"
+										+"<div class = \"pvi_th_diodi\"><div class = \"pvi_th_diodio\">"
+										+"<p>"+str+"</p></div><div class = \"pvi_th_diodoi\">"
+										+"<p>过期时间:<span>"+string+"</span></p></div></div></div></div>";
+							}
+						}
+						document.getElementById("pppdiv").innerHTML=html;
+					}else{
+						document.getElementById("pp").innerHTML=json.totall+"<span></span>";
+						var html=document.getElementById("ppdiv").innerHTML;
+						if(num==0){
+							html="";
+						}
+						for(i=0;i<list.length;i++){
+							var str="邀请好友  ";
+							if(list[i].fromType!=null&&list[i].fromType=='register'){
+								str="被邀注册  ";
+							}
+							if(null==list[i].fromMobile||'null'==list[i].fromMobile||''==list[i].fromMobile){
+								str="系统发放";
+							}else{
+							
+								
+									if(list[i].fromMobile.indexOf("*")>0){
+									    str=str+list[i].fromMobile;
+									}else{
+										str=list[i].fromMobile;
+									}
+								 	
+							}
+							var string="";
+							if(null==list[i].endTimeStr||'null'==list[i].endTimeStr||'null'==list[i].endTimeStr){
+								string="永久有效";
+							}else{
+								string=list[i].endTimeStr;
+							}
+							if(list[i].addType!=null&&list[i].addType=='systemVip'){
+								str="VIP终生特权  ";
+							}
+							if((list[i].investStatus!=null&&list[i].investStatus=='1')|| (list[i].isEnd=='T'&&str.indexOf("红包")<=0)){
+							
+								if(str.indexOf("红包")>0){
+									html=html+"<div class = \"pvi_th_od\"><div class = \"pvi_th_odo\" style=\"background:#dbdbdb\">"
+											+"<p>"+list[i].investTimeStr+"</p></div><div class = \"pvi_th_di\">"
+											+"<div class = \"pvi_th_dio\"><img src=\"../../img/exo.png\" alt=\"\">"
+											+"<p style=\"color:#dbdbdb\">+"+list[i].investorAmount+"</p><div class = \"pvi_th_io\"></div></div>"
+											+"<div class = \"pvi_th_diodi\" style=\"position:relative\"><div class = \"pvi_th_diodio\">"
+											+"<p>"+str+"</p></div><div class = \"pvi_th_diodoi\">"
+											+"<p >过期时间:<span>&nbsp;无</span></p></div>"
+											+"<div style=\"position: absolute;right: 6px;top: 20px;\"><img src=\"../../img/exp.png\" width=\"45px\" alt=\"\"></div></div></div></div>";
+								}else{
+									html=html+"<div class = \"pvi_th_od\"><div class = \"pvi_th_odo\" style=\"background:#dbdbdb\">"
+											+"<p>"+list[i].investTimeStr+"</p></div><div class = \"pvi_th_di\">"
+											+"<div class = \"pvi_th_dio\"><img src=\"../../img/exo.png\" alt=\"\">"
+											+"<p style=\"color:#dbdbdb\">+"+list[i].investorAmount+"</p><div class = \"pvi_th_io\"></div></div>"
+											+"<div class = \"pvi_th_diodi\" style=\"position:relative\"><div class = \"pvi_th_diodio\">"
+											+"<p>"+str+"</p></div><div class = \"pvi_th_diodoi\">"
+											+"<p>过期时间:<span>"+string+"</span></p></div>"
+											+"<div style=\"position: absolute;right: 6px;top: 20px;\"><img src=\"../../img/ex.png\" width=\"45px\" alt=\"\"></div></div></div></div>";
+									}
+								
+							}else{
+								if(str.indexOf("红包")>0){
+									html=html+"<div class = \"pvi_th_od\"><div class = \"pvi_th_odo\">"
+												+"<p>"+list[i].investTimeStr+"</p></div><div class = \"pvi_th_di\">"
+												+"<div class = \"pvi_th_dio\"><img src=\"../../img/ui.png\" alt=\"\">"
+												+"<p>+"+list[i].investorAmount+"</p><div class = \"pvi_th_io\"></div></div>"
+												+"<div class = \"pvi_th_diodi\"><div class = \"pvi_th_diodio\">"
+												+"<p>"+str+"</p></div><div class = \"pvi_th_diodoi\">"
+												+"<p >过期时间:<span>&nbsp;无</span></p></div>"
+												+"</div></div></div>";
+								
+								}else{
+									html=html+"<div class = \"pvi_th_od\"><div class = \"pvi_th_odo\">"
+												+"<p>"+list[i].investTimeStr+"</p></div><div class = \"pvi_th_di\">"
+												+"<div class = \"pvi_th_dio\"><img src=\"../../img/ui.png\" alt=\"\">"
+												+"<p>+"+list[i].investorAmount+"</p><div class = \"pvi_th_io\"></div></div>"
+												+"<div class = \"pvi_th_diodi\"><div class = \"pvi_th_diodio\">"
+												+"<p>"+str+"</p></div><div class = \"pvi_th_diodoi\">"
+												+"<p>过期时间:<span>"+string+"</span></p></div>"
+												+"</div></div></div>";
+								}
+								
+							}
+						}
+						document.getElementById("ppdiv").innerHTML=html;
+					}
+				}else{
+					document.getElementById("num").value=11;
+				}
+			}
+		});},300);
+	}
+	
+	</script>
+	
+	<div style="display:none">
+	<script>		
+	</script>
+	</div>
+	
+</body>
+</html>

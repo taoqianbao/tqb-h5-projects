@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>我的账户</title>
+	<link rel="stylesheet" href="../../css/reset.css" />
+	<link rel="stylesheet" href="../../css/newlayout.css" />
+	<link rel="stylesheet" href="../../css/zhezhao.css">
+	<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,initial-scale=1.0" />
+	<meta content="yes" name="apple-mobile-web-app-capable" />
+	<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+	<meta content="telephone=no" name="format-detection" />
+	<script type = "text/javascript" src = "../../javascript/jquery-1.7.2.min.js"></script>
+	<script type = "text/javascript" src = "../../javascript/cookie.js"></script>
+	
+	<style>
+    body {
+        background: #f8f8f8;
+        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        color:#000;
+        margin: 0;
+        padding: 0;
+    }
+    
+    @media (max-width:320px){
+		.invite-bg3 a {
+			color: #1acbbb;
+			border: 1px #1acbbb solid;
+			border-radius: 10px;
+			text-align: center;
+			position: relative;
+			left: 116px;
+			top: -25px;
+			font-weight: bold;
+			width: 62px;
+			height: 20px;
+			line-height: 20px;
+			font-size: 12px;
+			display: block;
+		}
+	}
+    </style>
+    
+    <script type="text/javascript">
+	//加载读取Json文件
+	$(function (){
+		initJsonData();
+		checkBranchComplete();
+	    
+	    
+	    $("#zanxuanxutou").click(function(){
+	    	window.location.href="https://m.p2p.com/weixin/user/xutouRewardIndex.html";
+	    });
+	    
+	     $("#firstBuy").click(function(){
+	    	window.location.href="https://m.p2p.com//weixin/specialSale/saledetail.html";
+	    });
+	    
+	      $("#firstBuySix").click(function(){
+	      	var taskType = 'Q6';
+	    	window.location.href="https://m.p2p.com//weixin/user/mainpage.html?ptype="+taskType;
+	    });
+	    
+	    
+	     $(".currentTotalMoney").click(function(){
+	    	window.location.href="https://m.p2p.com/weixin/user/accountDetail.html?type=M";
+	    });
+	    
+	     $(".yestodayBenefit").click(function(){
+	    	window.location.href="https://m.p2p.com/weixin/user/profit.html";
+	    });
+	     $("#tosetting").click(function(){
+	    	window.location.href="https://m.p2p.com/weixin/user/goAuth.html";
+	    });
+	    
+	  
+	    
+	     $(".chakanyaoqingma").click(function(){
+	    	pviclick();
+	    });
+	    
+	    $(".xiabianlanwd").hide();
+	    $(".active-wd").show();
+	    $(".myTxt").find("p").css("color","#1acbbb");
+	    $(".myTxt").attr('href',"javascript:void(0)");
+	});
+	
+	
+	function initJsonData(){
+		var data1 = '{"accumulatedIncome":"0.00","investAssets":"0.00","mobile":"159****4741","noSpecialSellingAssets":"0.00","privateAssets":"5000.00","privatePrincipal":"0.5","privateYield":"0.0","specialSellingAssets":"0.00","totalAssets":"5000.00","yesterdayProfit":"0.00"}';
+		var data = eval('(' + data1 + ')');
+		$("#accumulatedIncome").html(data.accumulatedIncome);
+		$("#currentTotalMoney").html(data.investAssets);
+	    $("#AccountprivAllPrincipalM").html(data.privateAssets);
+	    $("#specialSellingAssets").html(data.specialSellingAssets);
+	    $("#noSpecialSellingAssets").html(data.noSpecialSellingAssets);
+		$("#mobile").html(data.mobile);
+		$("#privateYield").html("*特权金自动兑换至月账户，享7天6%+"+data.privateYield+"%收益");
+		$("#yestodayBenefit").html(data.yesterdayProfit);
+	}
+	
+	function checkBranchComplete() {
+		var token = getCookie("utoken");
+		$.post("/weixin/checkBranchComplete.html",
+	       			{"token":token},
+	       			function (data){
+			      	var data = eval('(' + data + ')');
+			      	var type0 = data.type0;
+			      	var type1 = data.type1;
+			      	if(type0 == 1) {
+			      		$('#zhezhao1').show();
+			      		$('#showDiv1').show();
+			      		$('#zhe1').show();
+			      	}
+			      	if (type0 == 0 && type1 == 1) {
+			      		if (data.Q != 0) {
+							var text = "季账户";
+						}
+			      		if (data.Y != 0) {
+							var text = "年账户";
+						}
+						if (data.Q != 0 && data.Y != 0) {
+							var text = "季账户和年账户"
+						}
+			      		$('#text').html(text);
+			      		$('#text1').html(data.total);
+						$('#zhezhao2').show();
+			      		$('#showDiv2').show();
+			      		$('#zhe2').show();
+					}
+	      	},"json");
+	}
+	
+	function pviclick(){
+		$('#zhezhaow').show();
+		$('#showDivw').show();
+		$('#zhew').show();
+	};
+	
+	function hiddeniclick(){
+		$('#zhezhaow').hide();
+		$('#showDivw').hide();
+		$('#zhew').hide();
+	};
+	
+	function getMessage(){
+		var messFlag = $("#messFlag").val();
+		//alert(messFlag);
+		if(messFlag=='T'){
+			$('#zhezhao5').show();
+			$('#showDiv5').show();
+			$('#zhe5').show();	
+		}
+	}
+	function messageTip5(){
+		$('#zhezhao5').hide();
+		$('#showDiv5').hide();
+		$('#zhe5').hide();
+		history.pushState({}, "金融理财","/weixin/user/userCenter.html");
+		window.location.href="https://m.p2p.com//weixin/user/goAuth.html";
+	}
+	
+	window.onload = function (){
+		$("#btoo").on('click',function (){
+			window.location.href = "completeBranchInfo.html";
+		});
+		$("#btoo1").on('click',function (){
+			var productCat = $("#text").html();
+			var count = $("#text1").html();
+			if (count == 1) {
+				window.location.href = "expireHandlePage.html";
+			}
+			if (count > 1) {
+				if (productCat=='年账户') {
+					productCat = 'Y';
+				}
+				if (productCat.indexOf("季账户") >= 0) {
+					productCat = 'Q';
+				}
+				window.location.href = "accountDetail.html?type="+productCat;
+			}
+		});
+		$("#zhezhao1").on('click',function (){
+			$('#zhezhao1').hide();
+			$('#showDiv1').hide();
+			$('#zhe1').hide();
+		});
+		$("#zhezhao2").on('click',function (){
+			$('#zhezhao2').hide();
+			$('#showDiv2').hide();
+			$('#zhe2').hide();
+		});
+		
+		getMessage();
+	} 
+	function national(num){
+		var html="";
+		var b="<b style=\"font-size:14px;font-family:'微软雅黑';line-height: 20px;font-weight:bold;color:#ff7c8a\">";
+		if(num==1){
+			html="月末了，现在取现将"+b+"错过10月1日上涨0.5%收益率的机会</b>哟~"
+		}else{
+			html=b+"10月1日-7日</b>申请取现，不再计息，"+b+"10月10日</b>资金到账哟~";
+		}
+		$("#shiftMse").html(html);
+		$("#shiftZhao").show();
+		$("#shiftShow").show();
+		$("#shiftZhe").show();
+	}
+	
+	function shiftTip(){
+		$("#shiftZhao").hide();
+		$("#shiftShow").hide();
+		$("#shiftZhe").hide();
+	}
+</script>
+</head>
+<body>
+<!-- 		 -->
+	<div class="newBox-user" style="position:relative">
+		<div style="display:-webkit-box;">
+			<div class="logo" id="tosetting" style="display:-webkit-box;-webkit-box-flex:1;-webkit-box-pack:center">
+				<img src="../../images/monkeyLogo.png" alt="" style="margin-left: 2.7rem;">
+			</div>
+			<div style="display:-webkit-box;width:2.2rem">
+				<a href="https://m.p2p.com/weixin/user/goAuth.html"><img src="../../images/setting.png" alt=""style="width:2.2rem;margin-top:3.2rem"></a>
+			</div>
+		</div>
+		
+		<div class="tel">
+			<p id="mobile"></p>
+		</div>
+		<div class="logo-bg">
+			<div class="bg-top currentTotalMoney"><p>总资产（元）</p><span  id="currentTotalMoney"></span></div>
+			<div class="bg-down">
+				<div class="bg-downleft yestodayBenefit">
+					<img src="../../images/user-icon1.png" alt="">
+					<div><p>昨日收益（元）</p><span  id="yestodayBenefit"></span></div>
+				</div>
+				<i class="bg-dashed"></i>
+				<div class="bg-downright yestodayBenefit" >
+					<img src="../../images/user-icon2.png" alt="">
+					<div><p>累计收入（元）</p><span  id="accumulatedIncome"></span></div>
+				</div>
+			</div>
+		</div>
+		<div class="logo-font currentTotalMoney">
+			<div style="border-radius:0.5rem 0.5rem 0 0">
+				<p>账户产品资产</p>
+				<span id="noSpecialSellingAssets"></span>
+				<img src="../../images/user-icon3.png" alt="">
+			</div>
+			<div>
+				<p>特卖产品资产</p>
+				<span id="specialSellingAssets"></span>
+				<img src="../../images/user-icon3.png" alt="">
+			</div>
+			<div class="font-3">
+				<p>特权本金</p>
+				<span id="AccountprivAllPrincipalM"></span>
+				<img src="../../images/user-icon3.png" alt="">
+			</div>
+		</div>
+		<div class="logo-tequan">
+			 <p>特权任务</p>
+		</div>
+		<!-- <div class="logo-wenben">
+			<p id="privateYield">*特权金自动兑换至月账户，享7天6%+0.1%收益</p>
+		</div> -->
+		<div class="task-bg">
+			<div class="task-bg1">
+				<p><span>首笔交易</span>送<span>15000元</span>特权金</p>
+			</div>
+			<div class="task-bg2">
+				<p id="firstBuy">去完成</p>
+			</div>
+		</div>
+		<div class="task-bg">
+			<div class="task-bg1">
+				<p>每名<span>好友首投</span>送<span>5000元</span>特权金</p>
+				<small>已邀请<b>0</b>人成交&nbsp;<a href="#"  class="chakanyaoqingma">查看我的邀请码</a></small>
+			</div>
+			<div class="task-bg2">
+				<p class="chakanyaoqingma">邀 请</p>
+			</div>
+		</div>
+		<div class="task-bg">
+			<div class="task-bg1">
+				<p>买<span>季账户-6个月</span>送<span>6倍</span>特权金</p>
+				<!-- <small>已获特权金（元）:</small> -->
+				<small>还可买入<b style="color:#1acbbb">10000</b>元 得<b style="color:#1acbbb">60000</b>元特权金</small>
+			</div>
+			<div class="task-bg2">
+				<p id="firstBuySix">去完成</p>
+			</div>
+		</div>
+		<div class="logo-txt">
+			<a href="https://m.p2p.com/weixin/user/task.html">更多特权金任务，点我查看>></a>
+		</div>
+		<aside class = "pageLogin_divth">
+					<a href="https://m.p2p.com/weixin/user/redeem.html"class = "pageLogin_divth_di">
+ 				<p>取现</p></a>
+ 				<input type="hidden" value = "" id = "messFlag"  name="messFlag"/>
+				<a href="https://m.p2p.com//weixin/user/mainpage.html?ptype=Q6" class = "pageLogin_divth_div"><p>买入</p></a>
+		</aside>
+		
+		<!-- 弹出框 -->
+	<section class = "zhezhao" id = "zhezhao1" style="position:fixed;bottom:0"></section>
+	<aside class = "showDiv" id = "showDiv1">
+		<div class = "zhe" id = "zhe1">
+		    <h1>提示</h1>
+			<p id="tishi">您的银行卡<b style="color:#ff7c8a;font-size: 14px">支行信息</b>尚未填写，为了您的资金能顺利到账，请马上填写</p>
+			<span id = "btoo">马上填写</span>
+		</div>
+	</aside>
+	<section class = "zhezhao" id = "zhezhaow" style = "position:fixed;bottom:0"></section>
+	<aside class = "showDiv" id = "showDivw" style="position:fixed;top:130px">
+		<div class = "zhe" id = "zhew">
+		<p id="tishi" style="padding:30px 0 6px 0;font-weight:normal">您的邀请码为：<b style="color:#ff7c8a;font-size:14px">01604741</b>，发给好友，注册时填写即可成功发特权啦~</p>
+		<span onclick="hiddeniclick()">确定</span>
+		</div>
+	</aside>
+	<section class = "zhezhao" id = "zhezhao2" style="position:fixed;bottom:0"></section>
+	<aside class = "showDiv" id = "showDiv2">
+		<div class = "zhe" id = "zhe2">
+		    <h1>提示</h1>
+			<p id="tishi">您的<b style="color:#ff7c8a;font-size: 14px" id='text'>账户</b>共有<b style="color:#ff7c8a;font-size: 14px" id='text1'></b>笔资金即将到期，请及时选择资金到期处理方式。</p>
+			<span id = "btoo1">选择处理方式</span>
+		</div>
+	</aside>
+	<section class = "zhezhao" id = "zhezhao5" ></section>
+	<aside class = "showDiv" id = "showDiv5">
+		<div class = "zhe" id = "zhe5">
+			<h1>提示</h1>
+			<p id="messageTip5">系统正在验证您的身份信息，请稍候再试</p>
+			<span id = "bto5" onclick="messageTip5()">确定</span>
+		</div>
+	</aside>
+	
+	<section class = "zhezhao" id = "shiftZhao" style="position:fixed;bottom:0"></section>
+	<aside class = "showDiv" id = "shiftShow" style="top:290px">
+		<div class = "zhe" id = "shiftZhe" style="height:150px;line-height:20px;">
+			<p id="shiftMse" style="padding-top:25px;height:50px"></p>
+			<span onclick="shiftTip()">暂不取现</span>
+			<div style="-webkit-box-pack:center;display:-webkit-box;">
+				<a href="/weixin/user/redeem.html" style="line-height:40px;text-decoration:underline">仍然要取</a>
+			</div>
+			
+		</div>
+	</aside>
+	<!-- 弹出框结束 -->
+<!doctype html>
+<meta charset="UTF-8">
+<p style="position:absolute;right:2rem;bottom:6rem;font-size:10px;color:#dddddd">市场有风险，投资需谨慎</p>
+					
+
+	</div>
+	
+	<div id = "showLogin" class="fixed">
+		<a href="https://m.p2p.com/weixin/specialSale/index.html" class="t-jTxt" >
+			<dl>
+				<dt  class="xiabianlantj"  style="background-image:url(../../images/t-j.png);background-size:100% 25px;height:25px"></dt>
+				<dd><p>推荐</p></dd>
+			</dl>
+		</a>
+		<a href="https://m.p2p.com/weixin/user/mainpage.html?ptype=Q6" class="l-cTxt">
+			<dl>
+				<dt class="xiabianlanlc" style="background-image:url(../../images/l-c.png);background-size:100% 25px;height:25px"></dt>
+				<dd><p>理财</p></dd>
+			</dl>
+		</a>
+		<a href="https://m.p2p.com/weixin/user/task.html" class="t-qTxt">
+			<dl>
+				<dt class="xiabianlantq" style="background-image:url(../../images/t-q.png);background-size:100% 25px;height:25px"></dt>
+				<dd><p>特权</p></dd>
+			</dl>
+		</a>
+		<a href="https://m.p2p.com/weixin/user/userCenter.html" class="myTxt">
+			<dl>
+				<dt class="active-foot active-wd" style="background-image:url(../../images/m-yActive.png);background-size:100% 25px;height:25px"></dt>
+				<dd><p>我的</p></dd>
+			</dl>
+		</a>
+	</div>
+	
+</body>
+</html>

@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>注册</title>
+	<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,initial-scale=1.0" />
+	<meta content="yes" name="apple-mobile-web-app-capable" />
+	<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+	<meta content="telephone=no" name="format-detection" />
+	<link rel="stylesheet" href="../css/reset.css" />
+	<link rel="stylesheet" href="../css/base.css" />
+	<link rel="stylesheet" href="../css/zhezhao.css" />
+	<script type="text/javascript" src="../../javascript/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="../../javascript/common.js"></script>
+    <script type="text/javascript" src="../../javascript/validatorUtil.js"></script>
+</head>
+<body onload="startExcute()">
+	<div> 
+		<section class = "login_bt">
+			<div class = "divoi">
+				<p>我们已发送短信验证码至159****4741，请在输入框内填写验证码，若未收到请耐心等候~</p>
+			</div>
+			
+			<form action="registerDetail.html" id="registerForm" method="post">
+				<div class = "divoi_odi">
+					<div class = "login_td" id = "login_dt">
+						<input type = "number" placeholder = "请输入验证码" id = "captcha" name="captcha" maxlength="8"/>
+						<input style='display:none' />
+						<input type="hidden" value = "15901604741" id = "phoneNumber"  name="phoneNumber"  />
+					</div>
+					<div class ="login_od" id = "login_do" style="width:116px">
+						<a href = "javascript:void(0);" id= "captchabeijing" style = "display:block">
+						<input type= "button" id="getCaptcha" style= "text-align:left;height:50;width:100;border-left: 0;border-right: 0;border-top: 0; border-bottom:0; background:url(0) no-repeat;" value="获取验证码" /> 
+						</a>
+					</div>
+				</div>
+				<div class = "divoi_odi" style="display:none">
+					<div class = "login_td" id = "login_dt">
+						<input type = "text" placeholder = "请输人图片中的文字" id = "captcha2" onkeydown="return handleEnter(this, event)"/>
+					</div>
+					<div class ="login_od" id = "login_do">
+						<img  alt="看不清楚，换一张" onclick="reloadVertifyCode(this)">
+					</div>
+				</div>
+				<aside class = "aisde">
+					<div>
+						<div class = "aisde_od">
+							<input type="password" placeholder="请设置密码"   name="password" id="password" onkeypress="return handleEnter(this, event)"/>
+						</div>
+					</div>
+					<div>
+						<div class = "aisde_od">
+							<input type="password" placeholder="请重复密码"   name="passwordCheck" id="passwordCheck"  onkeydown="return handleEnter(this, event)"/>
+						</div>
+					</div>
+				</aside>
+				<div class = "asied">
+					<div class = "aisde_odi">
+						<input type="text" placeholder="请输入邀请码(默认为666666)"  id = "inviteCode" name="inviteCode"  onkeypress="if(event.keyCode==13){register();}"/>
+					</div>
+				</div>
+			<aside class = "aised_w" id = "dio" style="padding:15px 0 0 20px">
+				<div class = "aised_w_od" id="p_1">
+					<p>怎么获得邀请码？</p>
+				</div>
+				<div class = "aised_w_td">
+					<img src="../img/icon-down1.png" alt="" id="img_1">
+				</div>
+			</aside>
+			<div class = "div"></div>
+			<aside class = "aised_dis" style="display:block;top:-3px;position:relative">
+				<ul style="padding: 0 0 0 10px">
+					<li>·填写<p>好友邀请码</p>，和好友一起拿特权</li>
+					<li>·无好友邀请码，填<p>666666</p>也能拿特权</li>
+				</ul>
+			</aside>
+			<div class = "odi"></div>
+			<aside>
+				<input type="button" value = "注册" id="regButton" class ="login_btn" onclick="register()" />
+			</aside>	
+		   </form>
+		</section>
+	</div>
+	
+	<section class = "zhezhao" id = "zhezhao" ></section>
+	<aside class = "showDiv" id = "showDiv">
+		<div class = "zhe" id = "zhe">
+		    <h1>提示</h1>
+			<p id="message-tishi"></p>
+			<span id = "bto">确定</span>
+		</div>
+	</aside>
+	<script>
+	    var login_do = document.getElementById('login_do');
+	    $('.aised_w').on('click',function (){
+	    	$('.aised_dis').toggle();
+	    });
+	    var wait=90; 
+		function time(o) { 
+	        if (wait == 0) { 
+	            o.removeAttribute("disabled");
+	            login_do.style.background = "#ff7c8a";
+		        login_do.style.boxShadow = "0 5px 0 0 #e9717e";
+		        getCaptcha.style.color = "#fff";           
+	            o.value="重新发送"; 
+	            wait = 90; 
+	        } else { 
+	            o.setAttribute("disabled", true); 
+	            o.value=wait+"秒后重新发送";
+	            login_do.style.background = "#dbdbdb";
+		        login_do.style.boxShadow = "0 5px 0 0 #cbcbcb";
+		        getCaptcha.style.color = "#444"; 
+	            wait--; 
+	            setTimeout(function() { 
+	                time(o) 
+	            }, 
+	            1000) ;
+	        } 
+	    } 
+	    
+	   document.getElementById("getCaptcha").onclick = function(){
+	    		time(this);
+				reSendCaptcha();
+		} 
+		function startExcute(){
+			history.pushState({}, "金融理财","/weixin/register.html");
+			getCaptcha.onclick();
+		}
+		
+		function reSendCaptcha(){
+		   var phoneNumber = $("#phoneNumber").val();
+		   $.ajax({
+		        url:"reSendSms.html",
+		        type:"post",
+		        dataType:"json",
+		        data:{phoneNumber:phoneNumber},
+		        success:function(xhr) {
+		        	console.log(xhr);
+		        }
+		   });
+		}
+		
+		function chekPwdfor(pwd) {
+		var reg = new RegExp("^[A-Za-z0-9]+$");
+		if(!reg.test(pwd)||(pwd.length<6||pwd.length>16)){
+			return false;
+		}else {
+			return true;
+		}
+
+	}
+		
+		//前端验证
+		function register(){
+			var captcha = $("#captcha").val();
+			var randomCode = $("#randomCode").val();
+			var pw = $("#password").val();
+			var pwc = $("#passwordCheck").val();
+			var mobile = $("#phoneNumber").val();
+			var inviteCode=$("#inviteCode").val();
+			
+			if(isEmpty(captcha)){
+				showAlert("您输入的短信验证码不正确，请重新输入");
+				return;
+			}
+			if(chekPwdfor(pw)==false){
+			    showAlert("密码格式不正确，请输入6-16个英文字母、数字组合");
+				return;			
+			}
+			if(pw!=pwc){
+				showAlert("两次密码不相同，请重新输入");
+				return;
+			}
+			if(inviteCode==""||inviteCode==null){
+				showAlert("请填写好友邀请码或默认邀请码：666666");
+				$("#inviteCode").val('666666');
+				return;
+			}
+			if(isEmpty(inviteCode)){
+				showAlert("您输入的邀请码不正确，请重新输入");
+				return;
+			}
+			
+			$.ajax({
+		        url:"captchaCheck.html",
+		        type:"post",
+		        dataType:"json",
+		        data:{"captcha":captcha,"mobile":mobile},
+		        success:function(xhr) {
+		        	if(xhr=="1"){
+		        	     if(checkPassword(pw)){
+		        	       if(pwc==pw){
+		        	           //校验邀请码是否可用
+								$.ajax({
+									url : "checkInviteCode.html",
+									type : "post",
+									data : {
+										inviteCode : $("#inviteCode").val()
+									},
+									success : function(xhr) {
+										if (xhr == "1") {
+											$("#registerForm").submit();
+										} else {
+											showAlert("您输入的邀请码不正确，请重新输入");
+										}
+									}
+								});
+							} else {
+								showAlert("两次输入的密码不相同，请重新输入");
+							}
+						} else {
+							showAlert("密码格式不正确，请输入6-16个英文字母、数字组合");
+						}
+					} else if (xhr == "2") {
+						showAlert("您输入的短信验证码已经超时，请重新发送");
+					} else {
+						showAlert("您输入的短信验证码不正确，请重新输入");
+					}
+				}
+			});
+			
+		}
+		function showAlert(str) {
+			$("#zhezhao").show();
+			$("#showDiv").show();
+			$("#zhe").show();
+			$("#message-tishi").text(str);
+		}
+
+		$("#bto").click(function() {
+			hideAlert();
+		});
+
+		function hideAlert() {
+
+			$("#zhezhao").hide();
+			$("#showDiv").hide();
+			$("#zhe").hide();
+
+		}
+	</script>
+<div style="display:none">
+	<script>
+		
+	</script>
+</div>	
+<!doctype html>
+<meta charset="UTF-8">
+<p style="position:absolute;right:2rem;bottom:6rem;font-size:10px;color:#dddddd">市场有风险，投资需谨慎</p>
+					
+
+</body>
+</html>

@@ -1,0 +1,89 @@
+@charset "utf-8";
+/* CSS Document */
+*{
+	margin:0px;
+	padding:0px;
+}
+/*-------BODY--------*/
+body{height:100%; font-family:Arial, 微软雅黑;}
+.bc_e8e8e8{background-color:#e8e8e8;}
+header{padding:13px 0px;background-color:#ff3600;overflow:hidden;}
+header .con_d{background:url(/app_images/wap/v30/c2/weixin/hostScreen/pic_lefts.png) no-repeat 0 0;width:10px; height:25px; position:absolute; left:10px;}
+header .lowest{text-align:center; color:#FFFFFF;}
+header .con_x{position:absolute; right:10px; top:15px; cursor:pointer;color:#FFFFFF;}
+.icons_pingan{background:url(/app_images/wap/v30/c2/weixin/hostScreen/pic_pingan.png) no-repeat; width:90px; height:20px; float:left;}
+
+/*-----FONT-SIZE------*/
+.fs_16{font-size:16px;}
+.fs_15{font-size:15px;}
+.fs_14{font-size:14px; }
+/*------COLOR------*/
+.ffffff{color:#FFFFFF;}
+.bc_ffffff{background-color:#ffffff;}
+.bc_ff6000{background-color:#ff6000;}
+.bc_ff5500{background-color:#ff5500;}
+/*--------WIDTH--------*/
+.w182{width:182px !important;}
+
+/*---FLOAT--*/
+.fl{float:left !important;}
+.fr{float:right !important;}
+.tac{text-align:center;}
+/*--------MARGIN---------*/
+.ml_12{margin-left:12px;}
+.m_center{margin:0px auto;}
+.m10{margin:10px;}
+.ml_15{margin-left:15px;}
+.mr_15{margin-right:15px;}
+.mt_22{ margin-top:22px;}
+.ml_3{margin-left:3px;}
+
+.jiangs{ text-align:center;}
+.jiangs img{width:100%;}
+.w100{width:100%;}
+.w50_h136{width:50%; height:136px;float:left;}
+.prt{position:relative;}
+
+.bt_f88b25{border-top:#f88b25 1px solid;}
+.h56{height:56px;}
+.bor_d2d2d2{border:#d2d2d2 1px solid;}
+.ofh{overflow:hidden;}
+.theme{overflow:hidden; border-top:#d2d2d2 1px solid;}
+.theme div:first-child,.frsc{margin-top:14px; margin-left:11px; margin-bottom:14px; float:left; font-size:15px;}
+.crb{clear:both;}
+.cpr{cursor:pointer;}
+.pic_rights{background:url(/app_images/wap/v30/c2/weixin/hostScreen/pic_rights.png) no-repeat; width:8px; height:19px; float:right; margin-right:20px; margin:14px;}
+
+
+.nav_p{position:absolute; top:70px;  z-index:999; color:#FFFFFF; width:90%; margin-left:5%;}
+
+.pic_guanli{background:url(/app_images/wap/v30/c2/weixin/hostScreen/pic_guanli.png) no-repeat; width:20px; height:20px; float:left;}
+
+
+.pic_zhangdan{background:url(/app_images/wap/v30/c2/weixin/hostScreen/pic_zhangdan.png) no-repeat;}
+.pic_yewu{background:url(/app_images/wap/v30/c2/weixin/hostScreen/pic_yewu.png) no-repeat;}
+.pic_zhifu{background:url(/app_images/wap/v30/c2/weixin/hostScreen/pic_zhifu.png) no-repeat;}
+.pic_zhanghu{background:url(/app_images/wap/v30/c2/weixin/hostScreen/pic_zhanghu.png) no-repeat;}
+.pic_huankuan{background:url(/app_images/wap/v30/c2/weixin/hostScreen/pic_huankuan.png) no-repeat;}
+.pic_chouzhi{background:url(/app_images/wap/v30/c2/weixin/hostScreen/pic_chouzhi.png) no-repeat;}
+.pic_zhangdan,.pic_yewu,.pic_zhifu,.pic_zhanghu,.pic_huankuan,.pic_chouzhi{ width:50px; height:55px; margin:0 auto; margin-top:35px; margin-bottom:15px;}
+/*------------2014-10-10------------------*/
+.footer{position:fixed; width:100%; height:45px;left:0;bottom:0; z-index:1000;opacity:0.7; background-color:#f7f7f7;}
+.fot{width:20%; float:left; cursor:pointer;}
+.icon_rs{background:url(/app_images/wap/v30/c2/weixin/hostScreen/icon_rs.png) no-repeat; width:12px; height:20px; margin:0 auto; margin-top:15px;}
+.icon_ls{background:url(/app_images/wap/v30/c2/weixin/hostScreen/icon_ls.png) no-repeat; width:12px; height:20px; margin:0 auto; margin-top:15px;}
+.icon_tp{background:url(/app_images/wap/v30/c2/weixin/hostScreen/icon_tp.png) no-repeat; width:20px; height:28px; margin:0 auto; margin-top:10px;}
+.icon_book{background:url(/app_images/wap/v30/c2/weixin/hostScreen/icon_book.png) no-repeat; width:28px; height:25px; margin:0 auto; margin-top:12px;}
+.icon_cu{background:url(/app_images/wap/v30/c2/weixin/hostScreen/icon_cu.png) no-repeat; width:28px; height:26px; margin:0 auto; margin-top:12px;}
+
+.foll{position:fixed;width:155px; height:83px; z-index:9999; top:inherit; bottom:0px; left:50%; margin-left:-77px;}
+
+.popuer{width:155px; height:67px; opacity:0.6; background-color:#270c04;}
+.pic_card{background:url(/app_images/wap/v30/c2/weixin/hostScreen/pic_card.png) no-repeat; width:46px; height:46px; margin-left:9px; margin-top:12px; float:left;}
+.pic_close{background:url(/app_images/wap/v30/c2/weixin/hostScreen/pic_close.png) no-repeat; width:11px; height:11px; float:right; margin-right:5px; margin-top:5px;}
+.ml_5{margin-left:5px;}
+.mt5{margin-top:-5px;}
+.clicks{color:#FFFFFF; font-size:13px; float:left; margin-top:5px;}
+.pic_tops{background:url(/app_images/wap/v30/c2/weixin/hostScreen/pic_tops.png) no-repeat; width:16px; height:21px; float:left;}
+.ads{font-size:13px; color:#FFFFFF; margin-top:10px;}
+.pic_san{background:url(/app_images/wap/v30/c2/weixin/hostScreen/pic_sanjiaoxing.png) no-repeat; width:20px; height:16px; margin:0px auto;}

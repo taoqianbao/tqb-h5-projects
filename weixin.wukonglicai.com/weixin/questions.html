@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>常见问题</title>
+	<link rel="stylesheet" href="../css/reset.css" />
+	<link rel="stylesheet" href="../css/base.css" />
+	<link rel="stylesheet" href="../css/zhezhao.css" />
+	<link rel="stylesheet" href="../css/detail.css" />
+	<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,initial-scale=1.0" />
+	<meta content="yes" name="apple-mobile-web-app-capable" />
+	<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+	<meta content="telephone=no" name="format-detection" />
+	<!-- <script type="text/javascript" src="../javascript/problem.js"></script> -->
+	<script type="text/javascript" src="../javascript/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript">
+	$(function(){
+		$(".slider_open").click(function(event){
+			$(this).next("dd").toggle();
+			var domSrc = $(this).find("div img:nth-child(1)");
+			var imgSrc = domSrc.attr("src");
+			if(imgSrc.indexOf("icon-down.png") > 0 ){
+			    domSrc.attr("src", "../img/icon-up.png");
+			}
+			else{
+				domSrc.attr("src", "../img/icon-down.png");
+			}
+		});
+	})
+	</script>
+</head>
+<body>
+	<div class = "box">
+		<section class = "paged" style="position:relative;padding:20px 20px 35px 20px">
+			<div class = "paged_od">
+				<img src="../img/11.png" alt="">
+			</div>
+			<div class = "page">
+			<dl class="page_od">
+				<dt class = "slider_open" style = "border-top:0">
+					<div class = "page_od_od" id="p_1"><p>金融理财是什么？</p></div>
+					<div class = "page_od_td"><img id="img_1" src="../img/icon-down.png" alt=""></div>
+				</dt>
+				<dd>
+					<p>金融理财是玖富旗下移动理财品牌，专注解决流动性与高收益矛盾，主打每月1次可随取的高收益理财。</p>
+				</dd>
+				<dt class = "slider_open">
+					<div class = "page_od_od" id="p_1"><p>金融理财的收益为什么比较高？</p></div>
+					<div class = "page_od_td"><img id="img_1" src="../img/icon-down.png" alt=""></div>
+				</dt>
+				<dd>
+					<p>投资标的决定理财收益，金融理财远高于宝宝类货币基金的收益率，因为投资去向为经过玖富自己严格审核的分期GO、微信贷等优质个人小微债权，借款人均为高成长、高消费优质人群，收益率自然高出“宝宝”们一大截。</p>
+				</dd>
+				<dt class = "slider_open">
+					<div class = "page_od_od" id="p_1"><p>金融理财如何实现点对点的？</p></div>
+					<div class = "page_od_td"><img id="img_1" src="../img/icon-down.png" alt=""></div>
+				</dt>
+				<dd>
+					<p>金融理财采用了资金和数据相分离的模式，玖富自主开发大数据处理为基础的债权匹配系统，按照一个理财人匹配若干个债权，实现理财人和借款人的点对点匹配，点击账户资金明细右下角有的“标”字样，即可看到点对点债权匹配明细。同时，通过第三方支付和富友账户托管，每个理财人以及每个借款人都有属于自己的子账户，账户之间完全点对点，中间没有任何居间账户，没有资金池，这在业界内还是率先完成的。</p>
+					<p class="to" style="display:-webkit-box;"><img src="../img/p2.jpg" ></p>
+				</dd>
+				<dt class = "slider_open">
+					<div class = "page_od_od" id="p_1"><p>月账户如何实现每月1次的随时取现？</p></div>
+					<div class = "page_od_td"><img id="img_1" src="../img/icon-down.png" alt=""></div>
+				</dt>
+				<dd>
+					<p>月账户有 30天锁定期，锁定期满后，当理财人发起赎回申请，未到期的债权会自动退回到债权匹配系统中进行二次匹配，由于玖富理财时间久、理财人多，所以未到期的债权会很快被“买主”投标买走，进入正常的点对点资金匹配状态，从而实现了每月一次的取现机会。然后通过第三方支付系统，赎回到银行卡上的时间为预约指定日当天。</p>
+				</dd>
+				<dt class = "slider_open">
+					<div class = "page_od_od" id="p_1"><p>收益规则是如何计算的？</p></div>
+					<div class = "page_od_td"><img id="img_1" src="../img/icon-down.png" alt=""></div>
+				</dt>
+				<dd>
+					<p>1.月账户：</p>
+					<p>6%起步，按自然月逐月递增+0.5%的收益率，11%封顶。</p>
+					<p>即：一个月预期年化收益率6%，二个月6.5%，三个月7.0%，四个月7.5%，五个月8.0%，六个月8.5%，七个月9%，八个月9.5%，九个月10%，十个月10.5%，十一个月及更长时间保持11%</p>
+					<p>2.季账户：</p>
+					<p>3个月——预期年化收益率为8%</p>
+					<p>6个月——预期年化收益率为10%</p>
+					<p>9个月——预期年化收益率为11%</p>
+					<p>3.年账户：</p>
+					<p>预期年化收益率为12.0%</p>
+				</dd>
+				<dt class = "slider_open">
+					<div class = "page_od_od" id="p_2"><p>买入及计息规则是怎么样的？</p></div>
+					<div class = "page_od_td"><img id="img_2" src="../img/icon-down.png" alt=""></div>
+				</dt>
+				<dd>
+					<p>1.月账户：</p>
+					<p>· 买入金额100元起</p>
+					<p>· 单个用户累计买入月账户上限10万元</p>
+					<p>· 买入当天开始计息并产生收益（含周末及节假日）。
+金融在原T+2工作日计息的基础上为用户补充至当天计息。</p>
+					<p>2.	季账户</p>
+					<p>· 买入金额100元起</p>
+					<p>· 账户无上限</p>
+					<p>· 买入当天开始计息并产生收益（含周末及节假日）。 金融在原T+2工作日计息的基础上为用户补充至当天计息。</p>
+					<p>3.年账户：</p>
+					<p>· 买入金额1000元起</p>
+					<p>· 账户无上限</p>
+					<p>· 买入当天开始计息并产生收益（含周末及节假日）。
+金融在原T+2工作日计息的基础上为用户补充至当天计息。</p>
+				</dd>
+				<dt class = "slider_open">
+					<div class = "page_od_od" id="p_3"><p>取现规则是怎么样的？</p></div>
+					<div class = "page_od_td"><img id="img_3" src="../img/icon-down.png" alt=""></div>
+				</dt>
+				<dd>
+					<p>1.月账户：</p>
+					<p>· 随用随取，每月1次。新买入本金满30日后可以取现</p>
+					<p>· 取现到账时间：预约指定日当天到账（周末及节假日不包含在其中）</p>
+					<p>· 若月账户可取现金额≥100元时，每次至少取现100元；若月账户可取现金额＜100元时，需一次性取走月账户全部金额。</p>
+					<p>2.季账户：</p>
+					<p>· 3个月、6个月、9个月产品的理财期限分别为90天、180天、270天</p>
+					<p>· 用户可自主选择资金到期处理方式，系统默认为“自动退出”，用户还可选择“本息续投”或“本金续投”。该资金到期前5个工作日内停止修改到期处理方式</p>
+					<p>· 自动退出：本金及产生的收益在到期后的下一个工作日（周末及节假日不包含在其中）到用户银行卡上</p>
+					<p>· 本息续投：资金到期后，系统自动将该本金及收益续投到金融季账户中。续投资金的预期年化收益率为续投时的当前收益率。</p>
+					<p>· 本金续投：资金到期后，系统自动将该本金续投到金融季账户中。续投资金的收益率为续投时的当前收益率。该笔本金产生的收益将在下一个工作日（周末及节假日不包含在其中）到用户银行卡上。若资金＜1000元时，将不可进行“本金续投”</p>
+					<p>3.年账户：</p>
+					<p>· 理财期限为365天</p>
+					<p>· 用户可自主选择资金到期处理方式，系统默认为“自动退出”，用户还可选择“本息续投”或“本金续投”。该资金到期前5个工作日内停止修改到期处理方式</p>
+					<p>· 自动退出：本金及产生的收益在到期后的下一个工作日（周末及节假日不包含在其中）到用户银行卡上</p>
+					<p>· 本息续投：资金到期后，系统自动将该本金及收益续投到金融年账户中。续投资金的预期年化收益率为续投时的当前收益率。</p>
+					<p>· 本金续投：资金到期后，系统自动将该本金续投到金融年账户中。续投资金的收益率为续投时的当前收益率。该笔本金产生的收益将在下一个工作日（周末及节假日不包含在其中）到用户银行卡上</p>
+				</dd>
+				<dt class = "slider_open">
+					<div class = "page_od_od" id="p_4"><p>如何修改取现密码？</p></div>
+					<div class = "page_od_td"><img id="img_4" src="../img/icon-down.png" alt=""></div>
+				</dt>
+				<dd>
+					<p>1.点击首页下方“我的账户”链接进入我的账户页面</p>
+					<p>2.点击“我的账户”右上方的齿轮图标，进入“我的设置”页面</p>
+					<p>3.选择“修改取现密码”，输入原密码后再输入新密码，即修改成功</p>
+				</dd>
+				<dt class = "slider_open">
+					<div class = "page_od_od" id="p_5"><p>忘记取现密码怎么办？</p></div>
+					<div class = "page_od_td"><img id="img_5" src="../img/icon-down.png" alt=""></div>
+				</dt>
+				<dd>
+					<p>1.点击首页下方“我的账户”链接进入我的账户页面</p>
+					<p>2.点击“我的账户”右上方的齿轮图标，进入“我的设置”页面</p>
+					<p>3.选择“找回取现密码”，输入身份证号后再设置新密码，即找回成功</p>
+				</dd>
+				<dt class = "slider_open">
+					<div class = "page_od_od" id="p_6"><p>银行卡支付限额是怎样的？</p></div>
+					<div class = "page_od_td"><img id="img_6" src="../img/icon-down.png" alt=""></div>
+				</dt>
+				<dd style = "padding:0 0 10px 0">
+					<p>1.找到首页的“查看产品详情”链接</p>
+					<p>2.进入产品介绍页，点击“查看产品详情信息”</p>
+					<p>3.进入产品详情页最底部，即可查看各家银行卡的单笔支付限额和每日支付限额。</p>
+				</dd>
+				<dt class = "slider_open">
+					<div class = "page_od_od" id="p_7"><p>如何修改银行卡支付限额？</p></div>
+					<div class = "page_od_td"><img id="img_7" src="../img/icon-down.png" alt=""></div>
+				</dt>
+				<dd>
+					<p>交易限额由发卡行规定，如要调整交易限额，请联系银行客服</p>
+				</dd>
+				<dt class = "slider_open">
+					<div class = "page_od_od" id="p_8"><p>银行卡开通条件是怎样的？</p></div>
+					<div class = "page_od_td"><img id="img_8" src="../img/icon-down.png" alt=""></div>
+				</dt>
+				<dd>
+					<div class = "page_od_odo">
+						<p>开通条件（预留手机号与短信通知号码无关）</p>
+					</div>
+					<div class = "page_od_odo">
+						<p>开通办法（需携带身份证、银行卡到银行柜台操作）</p>
+					</div>
+					<span>农业银行</span>
+					<p>开通条件：办理银行卡时预留手机号码。</p>
+					<p>开通办法：银行柜台，告知柜员修改银行卡预留手机号。</p>
+					<span>工商银行</span>
+					<p>开通条件：办理银行卡时在柜台开通快捷支付功能，并使用首次在工行办卡时预留的手机号码（工行预留手机号唯一且与姓名身份证绑定，即使办理新的银行卡，预留手机号如未修改过，则始终以第一次在工行办卡时所预留的那个号码为准）。</p>
+					<p>开通办法：到工行柜台，告知柜员“开通快捷支付功能，通过4204交易修改预留的号码”</p>
+					<span>招商银行</span>
+					<p>开通条件：办理银行卡时预留手机号码。</p>
+					<p>开通办法：到银行柜台，告知柜员修改银行卡预留手机号。</p>
+					<span>中国银行</span>
+					<p>开通条件：使用首次在中行办卡时预留的手机号码（中行预留手机号唯一且与姓名身份证绑定，即使办理新的银行卡，预留手机号如未修改过，则始终以第一次在中行办卡时所预留的那个号码为准）。</p>
+					<p>开通办法：到中行柜台，告知柜员修改预留手机号。</p>
+					<span>建设银行</span>
+					<p>开通条件：使用首次在建行办卡时预留的手机号码（建行预留手机号唯一且与姓名身份证绑定，即使办理新的银行卡，预留手机号如未修改过，则始终以第一次在中行办卡时所预留的那个号码为准）。</p>
+					<p>开通办法：到建行柜台，告知柜员“开通网银，并修改银行卡预留手机号与网银手机号”。</p>
+					<span>光大银行</span>
+					<p>开通条件：办理银行卡时预留手机号码，需通过柜面开通网银开通。</p>
+					<p>开通办法：到银行柜台，开通网银并修改预留手机号。</p>
+					<span>浦发银行</span>
+					<p>开通条件：必须开通网上银行业务，办理银行卡时预留过手机号码，需柜面或网银开通银联无卡支付业务。</p>
+					<p>支付额度需要用户自行修改，如未修改，默认额度1000元。</p>
+					<p>开通办法：到浦发柜台，告知柜员“开通网银，并修改银行卡预留手机号与网银手机号”。同时修改支付额度</p>
+				</dd>
+				<dt class = "slider_open">
+					<div class = "page_od_od" id="p_9"><p>手机丢失怎么办？</p></div>
+					<div class = "page_od_td"><img id="img_9" src="../img/icon-down.png" alt=""></div>
+				</dt>
+				<dd>
+					<p>如果您的手机不幸丢失，我们将有以下措施保护您账户的资金支付安全</p>
+					<p>1.每笔交易都需要输入取现密码（切忌把取现密码保存在手机里）</p>
+					<p>2.他人无法通过“忘记取现密码”找回您的取现密码（如果您的银行卡与手机同时丢失，一定要优先挂失银行卡）</p>
+					<p>如果更换了新的手机号，请及时更换银行预留手机号与绑定手机号。</p>
+				</dd>
+			</dl>
+			</div>
+			<div class = "page_d"></div>
+			<div class = "page_th">
+				<div class = "page_th_od">
+					<img src="../img/12.png" alt="">
+				</div>
+				<div class = "page_th_od">
+					<p>客服热线</p>
+				</div>
+				<div class = "page_th_od">
+					<span>400-618-7125</span>
+				</div>
+				<div class = "page_th_odi">
+					<p>服务时间 周一至周五9:30-18:00</p>
+				</div>
+				<div class="page_f">
+					<p>您还可以在金融理财微信公众号中</p>
+				</div>
+				<div class="page_f">
+					<p>输入文字联系   <span>金融微信客服</span></p>
+				</div>
+				<div class="page_fo">
+					<img src="../img/wxlogo.png" alt="">
+				</div>
+			</div>
+			<p style="position:absolute;right:2rem;bottom:10px;font-size:10px;color:#dddddd">市场有风险，投资需谨慎</p>
+		</section>
+	</div>
+	<section id = "zhezhao2" class = "zhezhao" style = "position:fixed;bottom:0"></section>
+	<aside id = "showDiv2" class = "showDiv" style = "position:fixed;bottom:100px">
+		<div id = "zhe2" class = "zhe">
+			<p style = "line-height:65px;height:65px">400-618-7125</p>
+			<div class = "page_zhe">
+				<div class ="page_zhe_od">
+					<p style = "line-height:40px">取消</p>
+				</div>
+				<a href="tel://4006187125" class = "page_zhe_di">
+					<p style = "color:#fff;line-height:40px">拨打</p>
+				</a>
+			</div>
+			
+		</div>
+	</aside>
+	<!-- <aside class = "feo">
+		<img src="../img/tv.jpg" alt="">
+	</aside> -->
+	<!-- <script>
+		$(document).ready(function(){
+		     $('.slider_open').click(function(){
+			      $(this).next().toggle();
+			 })
+		});
+		$('.page_th_f').click(function (){
+			$('.zhezhao').show();
+			$('.showDiv').show();
+			$('.zhe').show();
+		});
+		$('.page_zhe_od').click( function(){
+			$('.zhezhao').hide();
+			$('.showDiv').hide();
+			$('.zhe').hide();
+		});
+		$('#zhezhao2').click( function (){
+			$('.zhezhao').hide();
+			$('.showDiv').hide();
+			$('.zhe').hide();
+		});
+	</script> -->
+	<div style="display:none">
+	
+	</div>
+	
+</body>
+</html>

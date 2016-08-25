@@ -1,0 +1,662 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>产品首页</title>
+	<link rel="stylesheet" type = "text/css" href="../css/reset.css" />
+	<link rel="stylesheet" type = "text/css" href="../css/base.css" />
+	<link rel="stylesheet" href="../css/newlayout.css" />
+	<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,initial-scale=1.0" />
+	<meta content="yes" name="apple-mobile-web-app-capable" />
+	<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+	<meta content="telephone=no" name="format-detection" />
+	<link rel="stylesheet" href="../css/zhezhao.css" />
+	<link rel="stylesheet" href="../css/detail.css"/>
+	<script type = "text/javascript" src = "../javascript/zepto.min.js"></script>
+	<script type = "text/javascript" src = "../javascript/cookie.js"></script>
+</head>
+<body>
+	<div class = "box">
+		<section style="position:relative">
+			<!-- 账户切换栏 -->
+			<aside class = "sec_t">
+				<div class = "sec_top_left" id = "tab">
+					<div id="m" style = "border-left:none">
+						<p>月账户</p>
+					</div>
+					<div id="q" class="active" style="border-left:1px #1acbbb solid;border-right:1px #1acbbb solid">
+						<p style = "color:#fff">季账户</p>
+					</div>
+					<div id="y">
+						<p >年账户</p>
+					</div>
+				</div>
+			</aside>
+	
+			<!-- 中间 -->
+			<div id = "od">
+				<!-- 月账户 -->
+				<nav id="M" >
+					<aside class = "sec_ce">
+						<p class = "sec_ce_id">预期年化最高</p>
+						<img src="../img/zhuti.png" alt="">
+						<p class = "sec_ce_pc">11.0<span class = "sec_ce_b">%</span></p>
+						<div class = "sec_ce_pt">
+							<a href = "javascript:void(0)" onclick="formDetilSubmit()">查看详情>></a>
+						</div>
+					</aside>
+						<aside class = "sec_tx" id="newbody">
+							<div class="sec_txi">
+								<img src="../img/icono.png" alt="">
+									<p>新手首笔交易送15000元特权金</p>
+							</div>
+						</aside>
+						<aside class = "sec_tx" id="newbody1">
+							<div class="sec_txi">
+								<img src="../img/icono.png" alt="">
+									<p>买入送1倍特权金，最高可得1万元</p>
+							</div>
+						</aside>
+<!-- 					<aside class = "sec_tx" id="newbody">
+						<div class="sec_txi">
+							<img src="../img/icono.png" alt="">
+							<p>新手90天限时特权</p>
+							<span>+0.5%</span>
+						</div>
+					</aside>
+					
+ -->
+					
+					<aside class="sec_txt">
+						<p><span>6%</span>起，逐月涨<span>0.5%</span>，最高<span>11%</span></p>
+					</aside>
+					<aside class="sec_txt">
+						<p>每月随取<span>1</span>次</p>
+					</aside>
+					
+					<div class="dio_ce" >
+						<img src="../img/to1.png" alt="" id="up"  style="display:none">
+					</div>
+					<aside class="dione" >
+						<div class="dione_o">
+							<p>已售罄</p>
+						</div>
+						<div class="dione_t">
+							<p>预计下次开售时间</p>
+							<span id="nextTime"></span>
+						</div>
+					</aside>
+
+					<aside class="didio"  style="display:block">
+						<div class="didion">
+							<img src="../img/tob.png" alt="">
+							<p>剩余买入额度（元）</p>
+							<span id="nowSale"> 2,648,769.31 </span>
+						</div>
+					</aside>
+					<div class="tb" >
+						<img src="../img/tbi.png" alt="" id="down"  style="display:block">
+					</div>
+					
+					<div class="fb" style="display:none">
+						<p>*新手专享通道，最高上限1万元</p>
+					</div>
+				</nav>
+
+				<!-- 季账户 -->
+				<nav id="Q"  style="display:block" >
+					<aside class = "sec_ce">
+						<img src="../img/zhuti.png" alt="">
+						<p class = "sec_ce_id">预期年化收益</p>
+						<p class = "sec_ce_pc" id="q_hieght">
+							10.0	
+						<span class = "sec_ce_b">%</span></p>
+						<div class = "sec_ce_pt">
+							<a href = "javascript:void(0)" onclick="formDetilSubmit()">查看详情>></a>
+						</div>
+					</aside>
+					
+<!-- 					<aside class = "sec_tx" >
+						<div class="sec_txi">
+							<img src="../img/icono.png" alt="">
+							<p>新手90天限时特权</p>
+							<span>+0.5%</span>
+						</div>
+					</aside>
+					
+ -->		
+								
+						<aside class = "sec_tx" id="newbody">
+							<div class="sec_txi">
+								<img src="../img/icono.png" alt="">
+									<p>新手首笔交易送15000元特权金</p>
+							</div>
+						</aside>
+						<aside class = "sec_tx" id="newbodyTask">
+							<div class="sec_txi">
+								<img src="../img/icono.png" alt="">
+									<p id="isShowQ6Task">买入送6倍特权金 ，最高可得6万元</p>
+									<p id="isShowQ3Task">买入送3倍特权金，最高可得3万元</p>
+									<p id="isShowQ9Task">买入送9倍特权金，最高可得9万元</p>
+							</div>
+						</aside>
+					<aside class = "sec_txt">
+						<p>期限<span id="q_time">
+							6	
+						</span>个月，到期退出或续投</p>
+					</aside>
+					<div class="ca" id = "ta" style="margin:0 0 15px 0">
+						<div >
+							<b>
+								<img src="../img/cv1.png" alt="">
+							</b>
+							<i>
+								<img src="../img/c1.png" alt="">
+							</i>
+							<p >3个月</p>
+						</div>
+						<div  class="activet" >
+							<b>
+								<img src="../img/cv2.png" alt="">
+							</b>
+							<i>
+								<img src="../img/c2.png" alt="">
+							</i>
+							<p >6个月</p>
+						</div>
+						<div >
+							<b>
+								<img src="../img/cv3.png" alt="">
+							</b>
+							<i>
+								<img src="../img/c3.png" alt="">
+							</i>
+							<p >9个月</p>
+						</div>
+					</div>
+				</nav>
+
+				<!-- 年账户 -->
+				<nav id="Y" >
+					<aside class = "sec_ce">
+						<img src="../img/zhuti.png" alt="">
+						<p class = "sec_ce_id">预期年化收益</p>
+						<p class = "sec_ce_pc">12.0<span class = "sec_ce_b">%</span></p>
+						<div class = "sec_ce_pt">
+							<a href = "javascript:void(0)" onclick="formDetilSubmit()">查看详情>></a>
+						</div>
+					</aside>
+						<aside class = "sec_tx" id="newbody">
+							<div class="sec_txi">
+								<img src="../img/icono.png" alt="">
+									<p>新手首笔交易送15000元特权金</p>
+							</div>
+						</aside>
+						<aside class = "sec_tx" id="newbody1">
+							<div class="sec_txi">
+								<img src="../img/icono.png" alt="">
+									<p>买入送12倍特权金，最高可得12万元</p>
+							</div>
+						</aside>
+<!-- 					<aside class = "sec_tx" id="newbody">
+						<div class="sec_txi">
+							<img src="../img/icono.png" alt="">
+							<p>新手90天限时特权</p>
+							<span>+0.5%</span>
+						</div>
+					</aside>
+					
+ -->
+					
+					<aside class = "sec_txt" style="margin:0 0 15px 0">
+						<p>期限<span>1</span>年，到期退出或续投</p>
+					</aside>
+				</nav>
+			</div>
+			<aside class = "sec_k" id="sec_k"></aside>
+			<!-- 按钮 -->
+			<aside class = "sec_zhu" id="is_jiaru">
+				<a href="../weixin/register.html" id ="di">马上加入</a>
+			</aside>
+			<form action="/weixin/user/buy/shiftBank.html" method="get" id="form">
+				<input type="hidden" name="ptype" value="Q6"/>
+				<input type="hidden" name="productCode" value="Q6-00002"/>
+				<input type="hidden" name="productPackageCode" value="M20151217000001" />
+			</form>
+			<form action="/weixin/accountdetail.html" method="get" id="formDetil">
+				<input type="hidden" name="ptype" value="Q6"/>
+				<input type="hidden" name="productCode" value="Q6-00002"/>
+				<input type="hidden" name="productPackageCode" value="M20151217000001" />
+				<input type="hidden" name="nextStartTime" id="nextStartTime" />
+			</form>
+			
+		</section>
+		
+		<!-- 底部 -->
+		<footer style="padding-bottom: 65px;">
+			<aside class = "fot">
+				<ul>
+					<li><a href="../weixin/story.html">金融故事</a></li>
+					<li><a href="#">|</a></li>
+					<li><a href="../weixin/safe.html">安全保障</a></li>
+					<li><a href="#">|</a></li>
+					<li><a href="../weixin/questions.html">常见问题</a></li>
+					<!-- <li><a href="#">|</a></li>
+					<li id="is_login">
+					</li> -->
+				</ul>
+			</aside>
+			<div style="-webkit-box-pack:center;display:-webkit-box;height:30px">
+				<p style="color:#dddddd">北京玖富时代投资顾问有限公司</p>
+			</div>
+			<p style="text-align:center;color:#dddddd;position:relative;top:-9px">市场有风险，投资需谨慎</p>
+		</footer>
+		
+	<section class = "zhezhao" id = "shiftZhao"></section>
+	<aside class = "showDiv" id = "shiftShow">
+		<div class = "zhe" id = "shiftZhe" style="height:150px;line-height:20px;">
+			<p id="shiftMse" style="padding-top:25px;height:50px">10月1日-7日，金融暂停买入哟，<b style="font-size:14px;font-family:'微软雅黑';line-height: 20px;font-weight:bold;color:#ff7c8a">10月8日重新开放购买</b></p>
+			<span onclick="shiftTip()">好的</span>
+			<div style="-webkit-box-pack:center;display:-webkit-box;">
+			</div>
+		</div>
+	</aside>
+		
+	</div>
+	
+		<div style="display:none"  id = "showLogin" class="fixed">
+		<a href="../weixin/specialSale/index.html" class="t-jTxt" >
+			<dl>
+				<dt  class="xiabianlantj" style="background-image:url(../images/t-j.png);background-size:100% 25px;height:25px"></dt>
+				<dd><p>推荐</p></dd>
+			</dl>
+		</a>
+		<a href="../weixin/user/mainpage.html?ptype=Q6" class="l-cTxt">
+			<dl>
+				<dt class="active-foot active-lc" style="background-image:url(../images/l-cActive.png);background-size:100% 25px;height:25px"></dt>
+				<dd><p>理财</p></dd>
+			</dl>
+		</a>
+		<a href="../weixin/user/task.html" class="t-qTxt">
+			<dl>
+				<dt class="xiabianlantq" style="background-image:url(../images/t-q.png);background-size:100% 25px;height:25px"></dt>
+				<dd><p>特权</p></dd>
+			</dl>
+		</a>
+		<a href="../weixin/user/userCenter.html" class="myTxt">
+			<dl>
+				<dt class="xiabianlanwd" style="background-image:url(../images/m-y.png);background-size:100% 25px;height:25px"></dt>
+				<dd><p>我的</p></dd>
+			</dl>
+		</a>
+	</div>
+	<div style="display:none"  id = "show" class="fixed">
+		<a href="../weixin/specialSale/index.html" class="t-jTxt">
+			<dl>
+				<dt  class="xiabianlantj" style="background-image:url(../images/t-j.png);background-size:100% 25px;height:25px"></dt>
+				<dd><p>推荐</p></dd>
+			</dl>
+		</a>
+		<a href="../weixin/mainpage.html?ptype=Q6" class="l-cTxt">
+			<dl>
+				<dt class="active-foot active-lc" style="background-image:url(../images/l-cActive.png);background-size:100% 25px;height:25px"></dt>
+				<dd><p>理财</p></dd>
+			</dl>
+		</a>
+		<a href="../weixin/task.html" class="t-qTxt">
+			<dl>
+				<dt class="xiabianlantq" style="background-image:url(../images/t-q.png);background-size:100% 25px;height:25px"></dt>
+				<dd><p>特权</p></dd>
+			</dl>
+		</a>
+		<a href="../weixin/noLogin.html" class="myTxt">
+			<dl>
+				<dt class="xiabianlanwd" style="background-image:url(../images/m-y.png);background-size:100% 25px;height:25px"></dt>
+				<dd><p>我的</p></dd>
+			</dl>
+		</a>
+	</div>
+		<script>
+		function getQueryString(name) {
+		    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+		    var r = window.location.search.substr(1).match(reg);
+		    if (r != null) return unescape(r[2]); return null;
+	 	}
+		var activtyQ=$(".sec_tx").find(".hidden");
+		
+		function eachActivityQ(activty,type){
+			for(var i=0;i<activty.length;i++){
+				if($(activty[i]).val().indexOf("Q,")!=-1||$(activty[i]).val().indexOf(type)!=-1){
+					$("#Q"+i).css("display","-webkit-box");
+				}else{
+					$("#Q"+i).css("display","none");
+				}
+			}
+		}
+		
+		$(function (){
+			var userflag= '';
+			if(userflag==1){
+				$("#showLogin").show();
+			}else{
+				$("#show").show();
+			}
+		    $(".xiabianlanlc").hide();
+		    $(".active-lc").show();
+		    $(".l-cTxt").find("p").css("color","#1acbbb");
+		    $(".l-cTxt").attr('href',"javascript:void(0)");
+		
+			$("#newbodyTask").hide();
+			var user = '';
+			var token=getCookie("utoken");
+			var index;
+			var $div = $('nav');
+			var ptype=getQueryString('ptype');
+			if(ptype==undefined|| ptype==null || ptype==''){
+				ptype='M';
+			}
+			if(ptype=='M'){
+				$($("#form").find("input")[0]).val("M");
+				$($("#form").find("input")[1]).val("M2014-11-19");
+				$($("#formDetil").find("input")[0]).val("M");
+				$($("#formDetil").find("input")[1]).val("M2014-11-19");
+			}else if( ptype=='Q3'){
+				$($("#form").find("input")[0]).val("Q3");
+				$($("#form").find("input")[1]).val("Q3-00001");
+				$($("#formDetil").find("input")[0]).val("Q3");
+				$($("#formDetil").find("input")[1]).val("Q3-00001");
+				if(activtyQ!=undefined&&activtyQ.length>0){
+					eachActivityQ(activtyQ,ptype);
+				}
+				if('1'==user){
+					var Q3finishStatus='';
+					if(Q3finishStatus!='T'){
+						$("#newbodyTask").show();
+						$("#isShowQ6Task").hide();
+						$("#isShowQ3Task").show();
+						$("#isShowQ9Task").hide(); 	
+					}else{
+						$("#newbodyTask").hide();
+					}
+				}else{
+					$("#newbodyTask").show();
+					$("#isShowQ6Task").hide();
+					$("#isShowQ3Task").show();
+					$("#isShowQ9Task").hide(); 
+				}				
+			}else if(ptype=='Q' || ptype=='Q6'){
+				$($("#form").find("input")[0]).val("Q6");
+				$($("#form").find("input")[1]).val("Q6-00002");
+				$($("#formDetil").find("input")[0]).val("Q6");
+				$($("#formDetil").find("input")[1]).val("Q6-00002");
+				if(activtyQ!=undefined&&activtyQ.length>0){
+					eachActivityQ(activtyQ,ptype);
+				}
+				if('1'==user){
+					var Q6finishStatus='';
+					if(Q6finishStatus!='T'){
+						$("#newbodyTask").show();
+						$("#isShowQ6Task").show();
+						$("#isShowQ3Task").hide();
+						$("#isShowQ9Task").hide(); 	
+					}else{
+						$("#newbodyTask").hide();
+					}	
+				}else{
+					$("#newbodyTask").show();
+					$("#isShowQ6Task").show();
+					$("#isShowQ3Task").hide();
+					$("#isShowQ9Task").hide(); 
+				}
+			}else if(ptype=='Q9'){
+				$($("#form").find("input")[0]).val("Q9");
+				$($("#form").find("input")[1]).val("Q9-00003");
+				$($("#formDetil").find("input")[0]).val("Q9");
+				$($("#formDetil").find("input")[1]).val("Q6-00003");
+				if(activtyQ!=undefined&&activtyQ.length>0){
+					eachActivityQ(activtyQ,ptype);
+				}
+				if('1'==user){
+					var Q9finishStatus='';
+					if(Q9finishStatus!='T'){
+						$("#newbodyTask").show();
+						$("#isShowQ6Task").hide();
+						$("#isShowQ3Task").hide();
+						$("#isShowQ9Task").show(); 	
+					}else{
+						$("#newbodyTask").hide();
+					}		
+				}else{
+					$("#newbodyTask").show();
+					$("#isShowQ6Task").hide();
+					$("#isShowQ3Task").hide();
+					$("#isShowQ9Task").show(); 
+				}				
+			}else if(ptype=='Y'){
+				$($("#form").find("input")[0]).val("Y");
+				$($("#form").find("input")[1]).val("Y2014-11-19");
+				$($("#formDetil").find("input")[0]).val("Y");
+				$($("#formDetil").find("input")[1]).val("Y2014-11-19");
+			}
+			$('#tab div').on('click',function (){
+				index = $(this).index();
+				var user = '';
+				$(this).addClass('active').siblings().removeClass();
+				$(this).find('p').css('color','#fff').parent().siblings().find('p').css('color','#1acbbb');
+				$div.eq(index).show().siblings().hide();
+				if($(this).attr('id')=="m"){
+					$($("#form").find("input")[0]).val("M");
+				    $($("#formDetil").find("input")[0]).val("M");
+					$($("#form").find("input")[1]).val("M2014-11-19");
+					$($("#formDetil").find("input")[1]).val("M2014-11-19");
+					if($("#user").val()!=undefined){
+						if($("#flag").val()=="T"&&$("#nextStartTime").val()!=""){
+				    	$("#is_jiaru").html("<a href=\"javascript:void(0)\" id=\"di\"  onclick=\"formSubmit()\">绿色通道，新手可买</a>");
+						}else if($("#flag").val()=="F"&&$("#nextStartTime").val()!=""){
+						    $("#is_jiaru").html("<a href=\"javascript:void(0)\" id=\"di\"  onclick=\"looklookQ()\">看看季账户</a>");
+						}else{
+						    $("#is_jiaru").html("<a href=\"javascript:void(0)\" id=\"di\"  onclick=\"formSubmit()\">马上买入</a>");
+						}
+					}
+				}else if($(this).attr('id')=="q"){
+					$($("#form").find("input")[0]).val("Q6");
+			        $($("#formDetil").find("input")[0]).val("Q6");
+					$($("#form").find("input")[1]).val("Q6-00002");
+					$($("#formDetil").find("input")[1]).val("Q6-00002");
+					$("#q_hieght").html("10.0<span class = \"sec_ce_b\">%</span>");
+					$("#q_time").html("6");
+					if(activtyQ!=undefined&&activtyQ.length>0){
+						eachActivityQ(activtyQ,"Q6");
+					}
+					if('1'==user){
+						var Q6finishStatus='';
+						if(Q6finishStatus!='T'){
+							$("#newbodyTask").show();
+							$("#isShowQ6Task").show();
+							$("#isShowQ3Task").hide();
+							$("#isShowQ9Task").hide(); 	
+						}else{
+							$("#newbodyTask").hide();
+						}		
+					}else{
+						$("#newbodyTask").show();
+						$("#isShowQ6Task").show();
+						$("#isShowQ3Task").hide();
+						$("#isShowQ9Task").hide(); 
+					}
+			       	$($("#ta").find("div")[1]).addClass('activet').siblings().removeClass();
+			        $(".activet").find('b').css('display','block').parent().siblings().find('b').css('display','none');
+					$(".activet").find('i').css('display','none').parent().siblings().find('i').css('display','block');
+					$(".activet").find('p').css('color','#ff7c8a').parent().siblings().find('p').css('color','#999999');
+					if($("#user").val()!=undefined){
+				        $("#is_jiaru").html("<a href=\"javascript:void(0)\" id=\"di\"  onclick=\"formSubmit()\">马上买入</a>");
+			       	}
+				}else{
+					$($("#form").find("input")[0]).val("Y");
+			        $($("#formDetil").find("input")[0]).val("Y");
+					$($("#form").find("input")[1]).val("Y2014-11-19");
+					$($("#formDetil").find("input")[1]).val("Y2014-11-19");
+					if($("#user").val()!=undefined){
+						$("#is_jiaru").html("<a href=\"javascript:void(0)\" id=\"di\"  onclick=\"formSubmit()\">马上买入</a>");
+			        }
+				}
+				
+			});
+			
+			$('#ta div').on('click',function (){
+				index = $(this).index();
+				$(this).addClass('activet').siblings().removeClass();
+				$(this).find('b').css('display','block').parent().siblings().find('b').css('display','none');
+				$(this).find('i').css('display','none').parent().siblings().find('i').css('display','block');
+				$(this).find('p').css('color','#ff7c8a').parent().siblings().find('p').css('color','#999999');
+				if (token!=null && token!=""){
+					$("#is_jiaru").html("<a href = 'javascript:void(0)' id = 'di' onclick='formSubmit()'>马上买入</a>");	
+				}else{
+					$("#is_jiaru").html("<a href = '/weixin/register.html' id = 'di'>马上加入</a>");
+				}
+				var user = '';
+				if(index==0){
+					$($("#form").find("input")[0]).val("Q3");
+					$($("#form").find("input")[1]).val("Q3-00001");
+					$($("#formDetil").find("input")[0]).val("Q3");
+					$($("#formDetil").find("input")[1]).val("Q3-00001");
+					$("#q_hieght").html("8.0<span class = \"sec_ce_b\">%</span>");
+					$("#q_time").html("3");
+					if('1'==user){
+						var Q3finishStatus='';
+						if(Q3finishStatus!='T'){
+							$("#newbodyTask").show();
+							$("#isShowQ6Task").hide();
+							$("#isShowQ3Task").show();
+							$("#isShowQ9Task").hide(); 	
+						}else{
+							$("#newbodyTask").hide();
+						}
+					}else{
+						$("#newbodyTask").show();
+						$("#isShowQ6Task").hide();
+						$("#isShowQ3Task").show();
+						$("#isShowQ9Task").hide(); 
+					}
+					if(activtyQ!=undefined&&activtyQ.length>0){
+						eachActivityQ(activtyQ,"Q3");
+					}	
+				}else if(index==1){
+					$($("#form").find("input")[0]).val("Q6");
+					$($("#form").find("input")[1]).val("Q6-00002");
+					$($("#formDetil").find("input")[0]).val("Q6");
+					$($("#formDetil").find("input")[1]).val("Q6-00002");
+					$("#q_hieght").html("10.0<span class = \"sec_ce_b\">%</span>");
+					$("#q_time").html("6");
+					if(activtyQ!=undefined&&activtyQ.length>0){
+						eachActivityQ(activtyQ,"Q6");
+					}
+					if('1'==user){
+						var Q6finishStatus='';
+						if(Q6finishStatus!='T'){
+							$("#newbodyTask").show();
+							$("#isShowQ6Task").show();
+							$("#isShowQ3Task").hide();
+							$("#isShowQ9Task").hide(); 	
+						}else{
+							$("#newbodyTask").hide();
+						}
+					}else{
+						$("#newbodyTask").show();
+						$("#isShowQ6Task").show();
+						$("#isShowQ3Task").hide();
+						$("#isShowQ9Task").hide(); 
+					}
+				}else{
+					$($("#form").find("input")[0]).val("Q9");
+					$($("#form").find("input")[1]).val("Q9-00003");
+					$($("#formDetil").find("input")[0]).val("Q9");
+					$($("#formDetil").find("input")[1]).val("Q9-00003");
+					$("#q_hieght").html("11.0<span class = \"sec_ce_b\">%</span>");
+					$("#q_time").html("9");
+					if(activtyQ!=undefined&&activtyQ.length>0){
+						eachActivityQ(activtyQ,"Q9");
+					}
+					if('1'==user){
+						var Q9finishStatus='';
+						if(Q9finishStatus!='T'){
+							$("#newbodyTask").show();
+							$("#isShowQ6Task").hide();
+							$("#isShowQ3Task").hide();
+							$("#isShowQ9Task").show(); 	
+						}else{
+							$("#newbodyTask").hide();
+						}
+					}else{
+						$("#newbodyTask").show();
+						$("#isShowQ6Task").hide();
+						$("#isShowQ3Task").hide();
+						$("#isShowQ9Task").show(); 
+					}
+				}
+			});
+		
+		});
+		
+		function looklookQ(){
+			$("#q").addClass('active').siblings().removeClass();
+			$("#q").find('b').css('display','block').parent().siblings().find('b').css('display','none');
+			$("#q").find('i').css('display','none').parent().siblings().find('i').css('display','block');
+			$($("#ta").find("div")[1]).addClass('activet').siblings().removeClass();
+			$(".activet").find('b').css('display','block').parent().siblings().find('b').css('display','none');
+			$(".activet").find('i').css('display','none').parent().siblings().find('i').css('display','block');
+			$(".activet").find('p').css('color','#ff7c8a').parent().siblings().find('p').css('color','#999999');
+			$($("#form").find("input")[0]).val("Q6");
+			$($("#form").find("input")[1]).val("Q6-00002");
+			$($("#formDetil").find("input")[0]).val("Q6");
+			$($("#formDetil").find("input")[1]).val("Q6-00002");
+			$("#q_hieght").html("10.0<span class = \"sec_ce_b\">%</span>");
+			$("#q_time").html("6");
+			if(activtyQ!=undefined&&activtyQ.length>0){
+				eachActivityQ(activtyQ,"Q6");
+			}
+			$("#Q").show().siblings().hide();
+			$("#q").find('p').css('color','#fff');
+			$("#m").find('p').css('color','#1acbbb');
+			$("#is_jiaru").html("<a href = 'javascript:void(0)' id = 'di' onclick='formSubmit()'>马上买入</a>");
+		}
+		
+		function formSubmit(){
+			var National=$("#National").val();
+			if(National!=undefined||National!=null){
+				$("#shiftZhao").show();
+				$("#shiftShow").show();
+				$("#shiftZhe").show();
+			}else{
+				var user ='';
+				ptype=$($("#form").find("input")[0]).val();
+				if(user==1){
+					history.pushState({}, "金融理财","/weixin/user/mainpage.html?ptype="+ptype);
+				}else{
+					history.pushState({}, "金融理财","/weixin/mainpage.html?ptype="+ptype);
+				}
+				$("#form").submit();
+			}
+		}
+		
+		function formDetilSubmit(){
+			ptype=$($("#form").find("input")[0]).val();
+			var user ='';
+			if(user==1){
+				history.pushState({}, "金融理财","/weixin/user/mainpage.html?ptype="+ptype);
+			}else{
+				history.pushState({}, "金融理财","/weixin/mainpage.html?ptype="+ptype);
+			}
+			$("#formDetil").submit();
+		}
+		function shiftTip(){
+			$("#shiftZhao").hide();
+			$("#shiftShow").hide();
+			$("#shiftZhe").hide();
+		}
+	</script>
+	<div style="display:none">
+	
+	</div>
+</body>	
+</html>

@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>输入手机号码</title>
+	<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,initial-scale=1.0" />
+	<meta content="yes" name="apple-mobile-web-app-capable" />
+	<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+	<meta content="telephone=no" name="format-detection" />
+	<link rel="stylesheet" href="../css/reset.css" />
+	<link rel="stylesheet" href="../css/base.css" />
+	<link rel="stylesheet" href="../css/zhezhao.css" />
+	<script type="text/javascript" src="../javascript/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="../javascript/common.js"></script>
+    <script type="text/javascript" src="../javascript/validatorUtil.js"></script>
+</head>
+<body>
+	<div class = "box">
+		<section>
+			<form action="loginPassword.html"  id="loginPassword" method = "POST">
+				<div class = "login">
+					<div class = "login_od">
+						<p>+86</p>
+					</div>
+					<div class = "login_td">
+						<input type="number" placeholder="请输入手机号码"  id = "mobile" name="phoneNumber" maxlength="11"/>
+					</div>
+				</div>
+				<div class = "login_div">
+					<a href="../trust/xy.htm">查看用户协议</a>
+				</div>
+				<aside class = "login_bt">
+					<div>
+						<input type="button" value = "下一步" class = "login_btn" onclick="javascript:checkTelephone()"/>
+					</div>
+				</aside>
+				<aside class="login_fo">
+					<p>*金融不会在任何地方泄漏您的号码</p>
+				</aside>
+			</form>
+		</section>
+	</div>
+	<section id = "zhezhao" class = "zhezhao"></section>
+	<aside id = "showDiv" class = "showDiv">
+		<div id = "zhe" class = "zhe">
+			<h1>提示</h1>
+			<p id="message-tishi"></p>
+			<span id = "bto">确定</span>
+		</div>
+	</aside>
+<script type="text/javascript">
+	var bto = document.getElementById('bto');
+	
+	function checkTelephone(){
+	    var mobile = $("#mobile").val();
+		if(trim(mobile) =="" || mobile ==null){
+             showAlert("您输入的手机号有误，请重新输入");
+			return false;
+		}else if(!isMobel(mobile)){
+             showAlert("您输入的手机号有误，请重新输入");
+			return false;
+		}else{
+		    $("#loginPassword").submit();
+			return true;
+		}
+	}
+	
+	bto.onclick = function (){
+		hideAlert();
+	};
+		
+	function showAlert(str){
+			$("#zhezhao").show();
+			$("#showDiv").show();
+			$("#zhe").show();
+			$("#message-tishi").text(str);
+     }
+	
+	 $("#bto").click(function (){
+			hideAlert();
+	 });
+
+	 function hideAlert(){
+		 
+			$("#zhezhao").hide();
+			$("#showDiv").hide();
+			$("#zhe").hide();
+
+	}
+	
+	window.onload = function (){
+		var mobileErr= document.getElementById("mobileErr");
+		if(mobileErr){
+			showAlert("您输入的手机号有误，请重新输入");
+		}
+	}
+</script>
+<div style="display:none">
+	
+</div>
+<!doctype html>
+<meta charset="UTF-8">
+<p style="position:absolute;right:2rem;bottom:6rem;font-size:10px;color:#dddddd">市场有风险，投资需谨慎</p>
+					
+
+</body>
+</html>

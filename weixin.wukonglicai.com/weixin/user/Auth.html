@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>身份认证</title>
+	<link rel="stylesheet" href="../../css/reset.css" />
+	<link rel="stylesheet" href="../../css/base.css" />
+	<link rel="stylesheet" href="../../css/zhezhao.css" />
+	<script type="text/javascript" src="../../javascript/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="../../javascript/idCardNoValidate.js?20150629"></script>
+	<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,initial-scale=1.0" />
+	<meta content="yes" name="apple-mobile-web-app-capable" />
+	<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+	<meta content="telephone=no" name="format-detection" />
+	<meta http-equiv="pragma" content="no-cache"> 
+	<meta http-equiv="Cache-Control" content="no-cache">
+	<meta http-equiv="Expires" content="0">
+</head>
+<script type="text/javascript">
+	var teg1=false;
+	var teg2=false;
+	
+	function chekIdentity(){
+		var name = $("#firstname").val();
+		var idCardNo = $("#idcardNumber").val();
+		var pattern=/^[\u4E00-\u9FA5·]+$/;
+		 if(name ==null||name=="" ||trim(name)==""){
+				showzhezhao("真实姓名不能为空，请重新输入");
+				return false;
+		 }
+		name  = name.replace(/\s+/g,"");
+		 if(!pattern.test(name)){
+		 		showzhezhao("真实姓名信息输入有误，请重新输入");
+				return  false;
+		 }
+		 if(idCardNo ==null||idCardNo=="" ||trim(idCardNo)==""){
+				showzhezhao("身份证号不能为空，请重新输入");
+				return false;
+		 }
+		  if(!idCardNoValidate(idCardNo)){
+		  	showzhezhao("您输入的身份证号码有误，请重新输入");
+			return false;			
+	 	} 
+	 	$("#alertName").html('<b style = "color:#1acbbb;font-size:14px">姓名</b>：'+name);
+		$("#alertId").html('<b style = "color:#1acbbb;font-size:14px">身份证号</b>：'+idCardNo);
+		$("#zhezhao4").show();
+		$("#showDiv4").show();
+		$("#zhe4").show();
+	}
+	
+	 function trim(str){
+	     return str.replace(/(^\s*)|(\s*$)/g,"");
+	};
+	 function confrim(){
+	 	$("#zhezhao4").hide();
+		$("#showDiv4").hide();
+		$("#zhe4").hide();
+	 	var name = $("#firstname").val();
+	 	name  = name.replace(/\s+/g,"");
+		var idCardNo = $("#idcardNumber").val();
+		$.ajax({
+	 			type:"post",
+	 			url:"https://m.p2p.com/weixin/user/verifyIdCardNo.html",
+	 			data:{"name":name,"idCardNo":idCardNo},
+	 			success:function(data){
+	 				if(data.code=="success"){
+	 					$("#zhezhao4").hide();
+						$("#showDiv4").hide();
+						$("#zhe4").hide();
+	 					$("#zhezho").show();
+						$("#zh").show();
+						setTimeout(function () {backSetting()}, 300);
+	 				}else if(data.code=="nameNull"){
+	 					showzhezhao("真实姓名不能为空，请重新输入");
+	 				}else if(data.code=="nameError"){
+	 					showzhezhao("真实姓名信息输入有误，请重新输入");
+	 				}else if(data.code=="idCardNoNull"){
+	 					showzhezhao("身份证号不能为空，请重新输入");
+	 				}else if(data.code=="idCardExist"){
+	 					showzhezhao("该身份证号已被注册，请选择对应的账户进行登录");
+	 				}else if(data.code=="ageError"){
+	 					showzhezhao("您未满18周岁，暂不可使用金融理财");
+	 				}else if(data.code=="idCardError"){
+	 					showzhezhao("您输入的身份证号码有误，请重新输入");
+	 				}else if(data.code=="fail"){
+	 					showzhezhao("已经实名认证或认证中");
+	 				}else if(data.code=="countError"){
+	 					showzhezhao1("身份认证已达3次，请联系微信客服手动认证");
+	 				}else{
+	 					showzhezhao("服务器异常，请稍后再试");
+	 				}
+	 			}
+	 		});
+	 	}
+	 function showzhezhao(str){
+	 	$("#zhezhao4").hide();
+		$("#showDiv4").hide();
+		$("#zhe4").hide();
+		$("#messageTip").text(str);
+		$("#zhezhao").show();
+		$("#showDiv").show();
+		$("#zhe").show();
+	}
+	 	 //信息提示
+	 function messageTip(){
+	 	$("#zhezhao").hide();
+		$("#showDiv").hide();
+		$("#zhe").hide();
+		$("#zhezhao4").hide();
+		$("#showDiv4").hide();
+		$("#zhe4").hide();
+		 teg1=false;
+		 teg2=false;
+	 }
+ function showzhezhao1(str){
+	 	$("#zhezhao4").hide();
+		$("#showDiv4").hide();
+		$("#zhe4").hide();
+		$("#messageTip1").text(str);
+		$("#zhezhao1").show();
+		$("#showDiv1").show();
+		$("#zhe1").show();
+	}
+	 	 //信息提示
+	 function messageTip1(){
+	 	$("#zhezhao").hide();
+		$("#showDiv").hide();
+		$("#zhe").hide();
+		$("#zhezhao1").hide();
+		$("#showDiv1").hide();
+		$("#zhe1").hide();
+		$("#zhezhao4").hide();
+		$("#showDiv4").hide();
+		$("#zhe4").hide();
+		 teg1=false;
+		 teg2=false;
+	 }
+	  function messageTip4(){
+	 	$("#zhezhao4").hide();
+		$("#showDiv4").hide();
+		$("#zhe4").hide();
+		$("#zhezhao").hide();
+		$("#showDiv").hide();
+		$("#zhe").hide();
+		teg1=false;
+		 teg2=false;
+	 }
+	
+	 function backSetting(){
+	 	var delPwd = '';
+	 	var historyurl = 's';
+	 	var isReal = '';
+	 	var isVerifyIdcard = 'F';
+	 	if(delPwd==''){
+	 		var productPackageCode =  '';
+	 		var ptype ='';
+	 		window.location.href="https://m.p2p.com//weixin/user/reSetPayPwdIndex.html?historyurl="+historyurl+"&ptype="+ptype+"&productPackageCode="+productPackageCode;
+	 	}else if(historyurl=='s'&&isVerifyIdcard=='T'){
+	 		window.location.href="https://m.p2p.com//weixin/user/redeem.html?historyurl="+historyurl;
+	 	}else if(historyurl=='z'&&(isVerifyIdcard=='T'||isVerifyIdcard=='F')){
+	 		var productPackageCode =  '';
+	 		var ptype ='';
+	 		window.location.href="https://m.p2p.com//weixin/user/buy/shiftBank.html?ptype="+ptype+"&productPackageCode="+productPackageCode;
+	 	}else if(historyurl=='oneyuan'&&(isVerifyIdcard=='T'||isVerifyIdcard=='F')){
+	 		window.location.href="https://m.p2p.com//weixin/user/confirm.html?productCode=oneyuan";
+	 	}else if(historyurl=='100yuanm'&&(isVerifyIdcard=='T'||isVerifyIdcard=='F')){
+	 		window.location.href="https://m.p2p.com//weixin/user/confirm.html?productCode=100yuanm";
+	 	}else if(historyurl=='100yuany'&&(isVerifyIdcard=='T'||isVerifyIdcard=='F')){
+	 		window.location.href="https://m.p2p.com//weixin/user/confirm.html?productCode=100yuany";
+	 	}else if(historyurl=='s'||historyurl=='z'){
+	 		window.location.href="https://m.p2p.com//weixin/user/goAuth.html";
+	 	}else if(historyurl=='a'){
+	 		window.location.href="https://m.p2p.com//weixin/user/findPayPwdVerifyIdCard.html";
+	 	}else{
+	 		window.location.href="https://m.p2p.com//weixin/user/goAuth.html";
+	 	}
+	 	/* else if(historyurl=='z'){
+	 		var productPackageCode =  '';
+	 		var ptype ='';
+	 		window.location.href="https://m.p2p.com//weixin/user/buy/shiftBank.html?ptype="+ptype+"&productPackageCode="+productPackageCode;
+	 		//window.location.href="https://m.p2p.com//weixin/user/shift/shiftBank.html?historyurl="+historyurl;
+	 	} */
+	 }
+	 
+	 function getMessage(){
+	 	var isReal = '';
+	 	var isVerifyIdcard = 'F';
+	 	var historyurl = 's';
+	 	var sendEventCount = '0';
+	 	if(isReal=='T'&&isVerifyIdcard =='T'){
+	 		showzhezhao1("已经实名认证成功");	
+	 	}else if(sendEventCount>=3){
+	 		showzhezhao1("您的身份认证未通过次数已达3次,请联系微信客服进行人工认证");	
+	 	}else if(historyurl =='s'&&isReal=='T'&&isVerifyIdcard =='F'){
+	 		showzhezhao1("系统正在进行身份认证信息验证,预计需要1个工作日，暂不能取现");	
+	 	}else if(isReal=='T'&&isVerifyIdcard =='F'){
+	 		showzhezhao1("系统正在进行身份认证信息验证");	
+	 	}else if(isReal=='T'&&isVerifyIdcard =='O'){
+	 		showzhezhao1("系统正在进行身份认证信息验证");	
+	 	}else{
+	 		messageTip1();
+	 	}	
+	 }
+	  function userCenter(){
+	  		window.location.href="https://m.p2p.com//weixin/user/userCenter.html";
+	  }
+</script>
+<body onload="getMessage()">
+	<div>
+		<section class = "logino">
+			<form id="form" action="" method="post" onsubmit="return false">
+				<aside class = "aisde">
+					<div>
+						<div class = "aisde_od">
+							<input type="text" placeholder="请输入您的真实姓名"  id = "firstname" name="firstname" onkeypress="return handleEnter(this, event)"/>
+						</div>
+					</div>
+					<div>
+						<div class = "aisde_od">
+							<input type="text" placeholder="请输入您的身份证号"  id = "idcardNumber" name="idCardNo" maxlength="18" onkeydown='if(event.keyCode==13){chekIdentity();}'/>
+							<!-- <input type="hidden" value = "" id = "idCardNo"  name="idCardNo"/> -->
+						</div>
+					</div>
+				</aside>
+				<div class = "login_d"></div>
+				<div id = "to">
+					<input type="button" value = "认证" class = "login_btn" id = "bt" onclick="chekIdentity()"/>	
+				</div>
+			</form>
+		</section>
+	</div>
+	
+	
+	<section class = "zhezhao" id = "zhezhao" ></section>
+	<aside class = "showDiv" id = "showDiv">
+		<div class = "zhe" id = "zhe">
+			<h1>提示</h1>
+			<p id="messageTip">姓名信息输入有误，请重新输入</p>
+			<span id = "bto" onclick="messageTip()">确定</span>
+		</div>
+	</aside>
+	<section class = "zhezhao" id = "zhezhao1" ></section>
+	<aside class = "showDiv" id = "showDiv1">
+		<div class = "zhe" id = "zhe1">
+			<h1>提示</h1>
+			<p id="messageTip1">姓名信息输入有误，请重新输入</p>
+			<span id = "bto" onclick="userCenter()">确定</span>
+		</div>
+	</aside>
+	<section class = "zhezhao" id = "zhezhao4" ></section>
+	<aside class = "showDiv" id = "showDiv4">
+		<div class = "zhe" id = "zhe4" style = "height:190px">
+		    <h1 style = "color:#999999">请您再次确认您的个人信息</h1>
+			<div>
+				<p id="alertName" style = "height:20px;display:inline-block"></p>
+			</div>
+			<div>
+				<p id="alertId" style = "height:25px;display:inline-block"></p>
+			</div>
+			<p>请确保信息准确，以免影响您的买入与取现操作</p>
+			
+			<div class = "sho">
+				<div id = "bto4" onclick ="messageTip4()">
+					<p style = "color:#fff;line-height:40px;font-size:16px">修改</p>
+				</div>
+				<aside style = "width:20px"></aside>
+				<div id = "bto5" onclick="confrim()">
+					<p style = "color:#fff;line-height:40px; font-size:16px">确认</p>
+				</div>
+			</div>
+		</div>
+	</aside>
+
+	<div id = "zhezho" class = "zhezh" style="display:none">
+		<div id = "zh" class = "zhc">
+		<div>
+			<img src="https://m.p2p.com/img/opdui.png" alt="">
+		</div>
+		<div>
+			<p>信息已提交</p>
+		</div>
+		</div>
+	</div> 
+	
+	<div style="display:none">
+	
+	</div>
+<!doctype html>
+<meta charset="UTF-8">
+<p style="position:absolute;right:2rem;bottom:6rem;font-size:10px;color:#dddddd">市场有风险，投资需谨慎</p>
+					
+
+</body>
+</html>

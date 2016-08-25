@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>输入登录密码</title>
+	<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,initial-scale=1.0" />
+	<meta content="yes" name="apple-mobile-web-app-capable" />
+	<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+	<meta content="telephone=no" name="format-detection" />
+	<link rel="stylesheet" href="../css/reset.css" />
+	<link rel="stylesheet" href="../css/base.css" />
+	<link rel="stylesheet" href="../css/zhezhao.css" />
+</head>
+<body>
+	<div class = "box">
+		<section class = "logino">
+			<form id="form" action="https://m.p2p.com/weixin/mainPageLogin.html" method = "post" name="form" >
+				<div class = "login_o" style="margin: 0 0 10px 0">
+					<div class = "logino_td">
+						<input type="password" placeholder="请输入登录密码"  id = "password" name="password" maxlength="16" onkeydown="if(event.keyCode==13){checkPassword();}"/>
+						<input style='display:none' />
+						<input type="hidden" value = "13918969314" id = "phoneNumber"  name="phoneNumber" />
+					</div>
+				</div>
+				<p style="color: #ff7c8a;height:25px;margin-left:5px">密码输入超过5次,请半小时再试</p>
+				<div>
+					<input type="button" value = "登录" class = "login_btn" onclick="checkPassword()"/>
+				</div>
+			</form>
+			<div class = "login_do">
+				<form id="findPassword" action="https://m.p2p.com/weixin/findPassword.html" method = "post" >
+					<input type="hidden" value = "13918969314" id = "phoneNumber"  name="phoneNumber"/>
+					<p><a href="javascript:findPassword()">忘记密码？</a></p>
+				</form>
+			</div>
+		</section>
+	</div>
+	<section class = "zhezhao" id = "zhezhao" ></section>
+	<aside class = "showDiv" id = "showDiv">
+		<div class = "zhe" id = "zhe">
+		    <h1>提示</h1>
+			<p id="error-tip">登录密码不正确，请重新输入</p>
+			<span id = "bto">确定</span>
+		</div>
+	</aside>
+	<script>
+	var phoneNumber,password;
+		//忘记密码
+		function findPassword(){
+			document.getElementById("findPassword").submit();	
+		}
+		//验证密码
+		function checkPassword() {
+			phoneNumber=document.getElementById("phoneNumber").value;
+			password=document.getElementById("password").value;
+			if(password==""||password.length<6){
+				document.getElementById("error-tip").innerHTML="登录密码不正确，请重新输入";
+				showAlert();
+				return false;
+			}
+			document.getElementById("form").submit();
+		}
+		
+		function createXMLHttpRequest() {
+			if(window.XMLHttpRequest) {
+				return new XMLHttpRequest();
+			} else if(window.ActiveXObject) {
+				return new ActiveXObject("Microsoft.XMLHTTP");
+			} else {
+				alert("你使用的浏览器不支持XMLHttpRequest，请换一个浏览器再试");
+				return null;
+			}
+		}
+		
+		
+		function showAlert(){
+			document.getElementById("zhezhao").style.display = "block";
+			document.getElementById("showDiv").style.display = "block";
+			document.getElementById("zhe").style.display = "block";
+     }
+	
+	document.getElementById("bto").onclick = function (){
+			hideAlert();
+	 };
+
+	 function hideAlert(){
+		document.getElementById("zhezhao").style.display = "none";
+		document.getElementById("showDiv").style.display = "none";
+		document.getElementById("zhe").style.display = "none";
+	}
+		
+		
+	</script>
+	
+<div style="display:none">
+	<script>
+		
+	</script>
+</div>
+<!doctype html>
+<meta charset="UTF-8">
+<p style="position:absolute;right:2rem;bottom:6rem;font-size:10px;color:#dddddd">市场有风险，投资需谨慎</p>
+					
+
+</body>
+</html>

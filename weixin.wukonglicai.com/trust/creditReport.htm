@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>信用管理余额报告</title>
+	<link rel="stylesheet" href="../css/reset.css" />
+	<link rel="stylesheet" href="../css/base.css" />
+	<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,initial-scale=1.0" />
+	<meta content="yes" name="apple-mobile-web-app-capable" />
+	<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+	<meta content="telephone=no" name="format-detection" />
+	<script src="../javascript/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript">
+	$(function(){
+		$(".slider_open").click(function(event){
+			$(this).next("dd").toggle();
+			var domSrc = $(this).find("div img:nth-child(1)");
+			var imgSrc = domSrc.attr("src");
+			if(imgSrc.indexOf("icon-down.png") > 0 ){
+			    domSrc.attr("src", "../img/icon-up.png");
+			}
+			else{
+				domSrc.attr("src", "../img/icon-down.png");
+			}
+		});
+		$('#click').click(function (){
+			$('#boxImage').show();
+		});
+		$('#boxImage').click(function (){
+			$('#boxImage').hide();
+		});
+		$('#click10').click(function (){
+			$('#boxImage10').show();
+		});
+		$('#boxImage10').click(function (){
+			$('#boxImage10').hide();
+		});
+	});
+	</script>
+	<style>
+		.c_od{
+			padding:20px 10px;
+		}
+		.page_od_td{
+			padding-top: 5px;
+		} 
+		.page_od_td img{
+			width: 20px;
+		}
+		.page_od_od p{
+			padding:0;
+		}
+		.page_od p{
+			font-size: 12px;
+		}
+		.pic{
+			-webkit-box-pack:center;
+			display: -webkit-box;
+			padding:10px 20px;
+		}
+		.pic img{
+			width: 230px;
+		}
+		.boxImage{
+			width: 100%;
+		  	height: 100%;
+		  	position: fixed;
+		  	top: 0;
+		  	left: 0;
+		  	bottom: 0;
+			display: none;
+		}
+		.boxImage img{
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			top: 0;
+			left: 0;
+			bottom:0;
+		}
+	</style>
+</head>
+<body>
+	<div class = "box">
+		<section class = "c_od" style="position:relative">
+			<aside class = "canpital_od">
+				<img src="../img/list.png" alt="">
+			</aside>
+			<div class = "c_o" style="margin-bottom: 15px;">
+			<aside class = "canpital_th">
+				<img src="../img/list-top.png" alt="">
+			</aside>
+				<aside class = "canpital_td">
+					<p>信用管理费余额报告</p>
+				</aside>
+				<div class = "canpital_odi">
+					<aside class = "canpital_fo">
+						<p>金融理财是玖富旗下品牌， 信用管理费用是玖富为保障每位理财人的收益，向借款人收取并存入在民生银行存管的专用账户的费用，用以抵御逾期风险。</p>
+					</aside>
+				</div>
+				<div class = "canpital_odi">
+					<aside class = "canpital_fo" style = "border-bottom:0;padding:10px 0">
+						<p> 截止2015年12月03日，玖富信用管理费余额共计人民币285,054,499.45元。</p>
+					</aside>
+				</div>
+				<dl class="page_od">
+					<dt class = "slider_open" style="margin:0 20px">
+						<div class = "page_od_od" id="p_1"><p>《信用管理费托管报告》（2015年11月）</p></div>
+						<div class = "page_od_td"><img id="img_1" src="../img/icon-up.png" alt=""></div>
+					</dt>
+					<dd class="pic" style="display: none;">
+						<img src="../img/asset.png" id="click" class="click" alt="">
+					</dd>
+				</dl>
+				<dl class="page_od">
+					<dt class = "slider_open" style="margin:0 20px;">
+						<div class = "page_od_od" id="p_1"><p>《信用管理费托管报告》（2015年10月）</p></div>
+						<div class = "page_od_td"><img id="img_1" src="../img/icon-up.png" alt=""></div>
+					</dt>
+					<dd class="pic" style="display: none;">
+						<img src="../img/asset10.png" id="click10" class="click" alt="">
+					</dd>
+				</dl>
+				<p style="position:absolute;right:2rem;bottom:10px;font-size:10px;color:#dddddd">市场有风险，投资需谨慎</p>
+		</section>
+	</div>
+
+	
+	<div id="boxImage" class="boxImage">
+		<img src="../img/assetimage.png" alt="">
+	</div>
+	<div id="boxImage10" class="boxImage">
+		<img src="../img/assetimage10.png" alt="">
+	</div>
+	<!-- <aside class = "feo">
+		<img src="../img/tv.jpg" alt="">
+	</aside> -->
+	
+	<div style="display:none">
+	
+	</div>
+</body>
+</html>

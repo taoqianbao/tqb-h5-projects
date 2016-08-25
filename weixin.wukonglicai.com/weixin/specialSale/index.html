@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>推荐</title>
+	<link rel="stylesheet" href="../../css/reset.css" />
+	<link rel="stylesheet" href="../../css/newlayout.css" />
+	<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,initial-scale=1.0" />
+	<meta content="yes" name="apple-mobile-web-app-capable" />
+	<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+	<meta content="telephone=no" name="format-detection" />
+	<script type = "text/javascript" src = "../../javascript/jquery-1.7.2.min.js"></script>
+	<style>
+    body {
+        background: #f8f8f8;
+        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        color:#000;
+        margin: 0;
+        padding: 0;
+    }
+		.active-foot{
+			display:none;
+		}
+    </style>
+    <script type="text/javascript">
+	//加载读取Json文件
+	$(function (){
+		var userflag= 'F';
+		if(userflag=='T'){
+			$("#showLogin").show();
+		}else{
+			$("#show").show();
+		}
+	    $(".xiabianlantj").hide();
+	    $(".active-tj").show();
+	    $(".t-jTxt").find("p").css("color","#1acbbb");
+	    $(".t-jTxt").attr('href',"javascript:void(0)");
+	    
+	});
+</script>
+</head>
+<body>
+	<div class="newBox">
+		<div>
+		</div>
+		<div class="layout" style="padding-bottom:70px">
+			<div class="top">
+				<div class="topdisplay">
+					<div class="top1">
+						<h1>预期年化收益</h1>
+						<span>10.0<small>%</small></span>
+						<p><b>5000</b>元起投</p>
+					</div>
+					<div class="top2">
+						<h1>产品期限</h1>
+						<span>30<small>天</small></span>
+						<p>每人限购<b>2万</b>元</p>
+					</div>
+				</div>
+				
+				<div class="txt">
+					<p>特卖时间：2015-12-09至2016-01-06</p>
+					<p>每日早5点、10点、12点，整点限量发售</p>
+				</div>
+				<img src="../../images/icon.png" alt="">
+			</div>
+			<div class="btn">
+						<a href="../register.html">马上加入</a>
+				
+			</div>
+			<div class="font">
+					<p style="color:#ff7c8a">*下一次 2015-12-18 05:00开售</p>
+			</div>
+			<footer>
+				<aside class="fot">
+					<ul>
+						<li><a href="/weixin/story.html">金融故事</a></li>
+						<li><a>|</a></li>
+						<li><a href="/weixin/safe.html">安全保障</a></li>
+						<li><a>|</a></li>
+						<li><a href="/weixin/questions.html">常见问题</a></li>
+					</ul>
+				</aside>
+				<div style="-webkit-box-pack:center;display:-webkit-box;height:30px">
+					<p style="color:#dddddd">北京玖富时代投资顾问有限公司</p>
+					
+				</div>
+				<p style="text-align:center;color:#dddddd;position:relative;top:-6px">市场有风险，投资需谨慎</p>
+			</footer>
+		</div>
+	</div>
+	<div style="display:none"  id = "showLogin" class="fixed">
+		<a href="/weixin/specialSale/index.html" class="t-jTxt" >
+			<dl>
+				<dt  class="active-foot active-tj" style="background-image:url(../../images/t-jActive.png);background-size:100% 25px;height:25px"></dt>
+				<dd><p>推荐</p></dd>
+			</dl>
+		</a>
+		<a href="/weixin/user/mainpage.html?ptype=Q6" class="l-cTxt">
+			<dl>
+				<dt class="xiabianlanlc" style="background-image:url(../../images/l-c.png);background-size:100% 25px;height:25px"></dt>
+				<dd><p>理财</p></dd>
+			</dl>
+		</a>
+		<a href="/weixin/user/task.html" class="t-qTxt">
+			<dl>
+				<dt class="xiabianlantq" style="background-image:url(../../images/t-q.png);background-size:100% 25px;height:25px"></dt>
+				<dd><p>特权</p></dd>
+			</dl>
+		</a>
+		<a href="/weixin/user/userCenter.html" class="myTxt">
+			<dl>
+				<dt class="xiabianlanwd" style="background-image:url(../../images/m-y.png);background-size:100% 25px;height:25px"></dt>
+				<dd><p>我的</p></dd>
+			</dl>
+		</a>
+	</div>
+	<div style="display:none"  id = "show" class="fixed">
+		<a href="/weixin/specialSale/index.html" class="t-jTxt">
+			<dl>
+				<dt  class="active-foot active-tj" style="background-image:url(../../images/t-jActive.png);background-size:100% 25px;height:25px"></dt>
+				<dd><p>推荐</p></dd>
+			</dl>
+		</a>
+		<a href="/weixin/mainpage.html?ptype=Q6" class="l-cTxt">
+			<dl>
+				<dt class="xiabianlanlc" style="background-image:url(../../images/l-c.png);background-size:100% 25px;height:25px"></dt>
+				<dd><p>理财</p></dd>
+			</dl>
+		</a>
+		<a href="/weixin/task.html" class="t-qTxt">
+			<dl>
+				<dt class="xiabianlantq" style="background-image:url(../../images/t-q.png);background-size:100% 25px;height:25px"></dt>
+				<dd><p>特权</p></dd>
+			</dl>
+		</a>
+		<a href="/weixin/noLogin.html" class="myTxt">
+			<dl>
+				<dt class="xiabianlanwd" style="background-image:url(../../images/m-y.png);background-size:100% 25px;height:25px"></dt>
+				<dd><p>我的</p></dd>
+			</dl>
+		</a>
+	</div>
+</body>
+</html>
